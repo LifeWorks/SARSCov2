@@ -1,0 +1,17 @@
+#+STARTUP: nolatexpreview
+#+TITLE: Documentation and Notes for Project
+#+OPTIONS: tex:t
+#+OPTIONS: toc:nil
+#+OPTIONS: author:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONs: [a4paper,11pt]
+#+LATEX_CLASS_COMPILER: pdflatex
+#+latex_header: \usepackage{amssymb,amsmath,amsthm}
+#+latex_header: \usepackage{hyperref}
+#+latex_header: \usepackage{authblk} 
+#+latex_header: \author[1]{Song Feng}
+#+latex_header: \affil[1]{Pacific Northwest National Laboratory}
+
+
+
+
