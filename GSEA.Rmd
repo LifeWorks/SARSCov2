@@ -186,5 +186,213 @@ ggplot(data = df, mapping = aes(x=s, y=`Enrichment score`, color = `Gene sets`, 
 ```{r}
 ggplot(data = df, mapping = aes(x=s, y=`p-value`, color = `Gene sets`, shape = `Graph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_x_continuous(name=TeX("s"),  limits=c(0, 50)) + scale_y_log10(limits = c(NA, 1))
 ```
+## Calculating the enrichment scores with different measurements
+
+```{r}
+samplesize = 100000
+ss <- c(1:50)
+genesetNames <- c("ISGS", "IR", "PT")
+ztypes <- c("s-closeness", "s-betweenness")
+#tsRankedGeneAllUniLen <- list()
+dfNoSars2 <- setNames(data.frame(matrix(ncol = 7, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "s", "Gene sets","Graph metrics"))
+dfi <- 1
+```
+
+### Now analyse the s centrality and s betweenness scores
+
+#### Using the average values of individual metrics
+
+```{r}
+for (ztype in ztypes) {
+  infile <- sprintf("./biggerTransNoSars2-%s.csv", ztype)
+  if (file.exists(infile)) {
+    genelist <- read.csv(infile, header = TRUE, row.names = 1)
+    allGenenames <- rownames(genelist)
+    lenAll <- length(allGenenames)
+    #sRankedGeneAll <- list()
+    for (j in seq(1,length(ss))) {
+      higherOrder <- as.matrix(genelist[1:j])
+      aveHigherOrder <- sort(rowMeans(higherOrder), decreasing = TRUE)
+      allZscores <- aveHigherOrder
+      bakgrdZscores <- c(allZscores, rep(0, lenBakgrd - lenAll))
+      aveHigherOrderNoZeros <- aveHigherOrder[aveHigherOrder!=0]
+      genename <- names(aveHigherOrderNoZeros)
+      zscore <- aveHigherOrderNoZeros
+      dfsorted <- data.frame(genename, zscore)
+      rownames(dfsorted) <- 1:nrow(dfsorted)
+      ## calculate the statistics
+      for (gs in 1:length(genesetNames)) {
+        if (gs == 1) {
+          functionSet = isgsGeneList
+        } else if (gs == 2) {
+          functionSet = irGeneList
+        } else {
+          functionSet = ptGeneList
+        }
+        # Fisher's exact test
+        enr <- enrichment_by_fishers(dfsorted$genename, biggerTransGeneSet, functionSet)
+        p = enr$fisher$p.value
+        f = enr$foldx
+        mat = enr$mat
+        # ES calculation
+        genenames = dfsorted$genename
+        lenShort <- length(genenames)
+        zscores <- dfsorted$zscore
+        zscores[which(!(genenames %in% functionSet))] <- 0
+        es <- esFn(zscores)
+        sampledValues = c()
+        for (k in 1:samplesize) {
+          sampledis = sample(1:lenBakgrd)
+          # tempGenenames <- biggerTransGeneSet[sampledis[1:lenShort]]
+          # tempZscores <- bakgrdZscores[sampledis[1:lenShort]]
+          tempGenenames <- genenames[sampledis[1:lenShort]]
+          tempZscores <- zscores[sampledis[1:lenShort]]
+          tempZscores[which(!(tempGenenames %in% functionSet))] <- 0
+          sampledValues = c(sampledValues, esFn(tempZscores))
+        }
+        
+        ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
+        #ep = epFn(es, sampledValues)
+        # save test result
+        dfNoSars2[dfi,] <- c(mat[1,1], p, es, ep, ss[j], genesetNames[gs], ztype)
+        dfi <- dfi + 1
+      }
+    }
+    #tsRankedGeneAllUniLen <- c(tsRankedGeneAllUniLen, list(sRankedGeneAll))
+  }
+}
+#save(tsRankedGeneAllUniLen, file = "tsRankedGeneAllUniLen.RData")
+
+```
+
+
+### Make all the plotable values as numeric and save to file
+
+```{r}
+save(dfNoSars2, file = "dfNoSars2Ave.RData")
+```
+
+## Load and plot results
+
+```{r}
+load("dfNoSars2Ave.RData")
+dfAll$genecount <- as.numeric(dfAll$genecount)
+dfAll$p <- as.numeric(dfAll$p)
+dfAll$`Enrichment score` <- as.numeric(dfAll$`Enrichment score`)
+dfAll$`p-value` <- as.numeric(dfAll$`p-value`)
+dfAll$s <- as.numeric(dfAll$s)
+```
+
+Updates@2020-01-13 Generate plots of s <= 45 (also for p value plot) with z threshold = 3 and with p value threshold
+
+```{r}
+df <- dfNoSars2
+ggplot(data = df, mapping = aes(x=s, y=`Enrichment score`, color = `Gene sets`, shape = `Graph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_x_continuous(name='s', limits=c(0, 50)) + scale_y_continuous(limits = c(0.0, NA))
+```
+
+
+```{r}
+ggplot(data = df, mapping = aes(x=s, y=`p-value`, color = `Gene sets`, shape = `Graph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_x_continuous(name=TeX("s"),  limits=c(0, 50)) + scale_y_log10(limits = c(NA, 1))
+```
 
 ### Get all the ranks based on the average and also 
+
+```{r}
+for (ztype in ztypes) {
+  infile <- sprintf("./biggerTrans-%s.csv", ztype)
+  outfile <- sprintf("./biggerTransRanks-%s.csv", ztype)
+  if (file.exists(infile)) {
+    genelist <- read.csv(infile, header = TRUE, row.names = 1)
+    allGenenames <- rownames(genelist)
+    lenAll <- length(allGenenames)
+    firstCol <- as.matrix(genelist[1])
+    ranked <- data.frame(rank = seq(1:length(firstCol[firstCol!=0])))
+    rownames(ranked) <- ranked$rank
+    for (j in seq(1,length(ss))) {
+      higherOrder <- as.matrix(genelist[1:j])
+      aveHigherOrder <- sort(rowMeans(higherOrder), decreasing = TRUE)
+      allZscores <- aveHigherOrder
+      bakgrdZscores <- c(allZscores, rep(0, lenBakgrd - lenAll))
+      aveHigherOrderNoZeros <- aveHigherOrder[aveHigherOrder!=0]
+      genename <- names(aveHigherOrderNoZeros)
+      zscore <- aveHigherOrderNoZeros
+      dfsorted <- data.frame(genename, zscore)
+      rownames(dfsorted) <- 1:nrow(dfsorted)
+      
+      ranked <- cbind(ranked, dfsorted)
+    }
+    write.csv(ranked, outfile)
+  }
+}
+
+```
+
+
+```{r}
+for (ztype in ztypes) {
+  infile <- sprintf("./biggerTransNoSars2-%s.csv", ztype)
+  outfile <- sprintf("./biggerTransNoSars2Ranks-%s.csv", ztype)
+  if (file.exists(infile)) {
+    genelist <- read.csv(infile, header = TRUE, row.names = 1)
+    allGenenames <- rownames(genelist)
+    lenAll <- length(allGenenames)
+    firstCol <- as.matrix(genelist[1])
+    rankedNoSars2 <- data.frame(rank = seq(1:length(firstCol[firstCol!=0])))
+    rownames(ranked) <- ranked$rank
+    for (j in seq(1,length(ss))) {
+      higherOrder <- as.matrix(genelist[1:j])
+      aveHigherOrder <- sort(rowMeans(higherOrder), decreasing = TRUE)
+      allZscores <- aveHigherOrder
+      bakgrdZscores <- c(allZscores, rep(0, lenBakgrd - lenAll))
+      aveHigherOrderNoZeros <- aveHigherOrder[aveHigherOrder!=0]
+      genename <- names(aveHigherOrderNoZeros)
+      zscore <- aveHigherOrderNoZeros
+      dfsorted <- data.frame(genename, zscore)
+      rownames(dfsorted) <- 1:nrow(dfsorted)
+      
+      rankedNoSars2 <- cbind(rankedNoSars2, dfsorted)
+    }
+    write.csv(ranked, outfile)
+  }
+}
+
+```
+
+
+
+```{r}
+for (ztype in ztypes) {
+  infile <- sprintf("./biggerTrans-%s.csv", ztype)
+  infileNoSars2 <- sprintf("./biggerTransNoSars2-%s.csv", ztype)
+  outfile <- sprintf("./biggerTransSars2Effect-%s.csv", ztype)
+  if (file.exists(infile)) {
+    genelist <- read.csv(infile, header = TRUE, row.names = 1)
+    genelist2 <- read.csv(infileNoSars2, header = TRUE, row.names = 1)
+    allGenenames <- rownames(genelist)
+    allGenenames2 <- rownames(genelist2)
+    
+    
+    
+    lenAll <- length(allGenenames)
+    firstCol <- as.matrix(genelist[1])
+    rankedNoSars2 <- data.frame(rank = seq(1:length(firstCol[firstCol!=0])))
+    rownames(ranked) <- ranked$rank
+    for (j in seq(1,length(ss))) {
+      higherOrder <- as.matrix(genelist[1:j])
+      aveHigherOrder <- sort(rowMeans(higherOrder), decreasing = TRUE)
+      allZscores <- aveHigherOrder
+      bakgrdZscores <- c(allZscores, rep(0, lenBakgrd - lenAll))
+      aveHigherOrderNoZeros <- aveHigherOrder[aveHigherOrder!=0]
+      genename <- names(aveHigherOrderNoZeros)
+      zscore <- aveHigherOrderNoZeros
+      dfsorted <- data.frame(genename, zscore)
+      rownames(dfsorted) <- 1:nrow(dfsorted)
+      
+      ranked <- cbind(rankedNoSars2, dfsorted)
+    }
+    write.csv(ranked, outfile)
+  }
+}
+
+```
+
