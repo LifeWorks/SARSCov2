@@ -352,47 +352,10 @@ for (ztype in ztypes) {
       
       rankedNoSars2 <- cbind(rankedNoSars2, dfsorted)
     }
-    write.csv(ranked, outfile)
+    write.csv(rankedNoSars2, outfile)
   }
 }
 
 ```
 
-
-
-```{r}
-for (ztype in ztypes) {
-  infile <- sprintf("./biggerTrans-%s.csv", ztype)
-  infileNoSars2 <- sprintf("./biggerTransNoSars2-%s.csv", ztype)
-  outfile <- sprintf("./biggerTransSars2Effect-%s.csv", ztype)
-  if (file.exists(infile)) {
-    genelist <- read.csv(infile, header = TRUE, row.names = 1)
-    genelist2 <- read.csv(infileNoSars2, header = TRUE, row.names = 1)
-    allGenenames <- rownames(genelist)
-    allGenenames2 <- rownames(genelist2)
-    
-    
-    
-    lenAll <- length(allGenenames)
-    firstCol <- as.matrix(genelist[1])
-    rankedNoSars2 <- data.frame(rank = seq(1:length(firstCol[firstCol!=0])))
-    rownames(ranked) <- ranked$rank
-    for (j in seq(1,length(ss))) {
-      higherOrder <- as.matrix(genelist[1:j])
-      aveHigherOrder <- sort(rowMeans(higherOrder), decreasing = TRUE)
-      allZscores <- aveHigherOrder
-      bakgrdZscores <- c(allZscores, rep(0, lenBakgrd - lenAll))
-      aveHigherOrderNoZeros <- aveHigherOrder[aveHigherOrder!=0]
-      genename <- names(aveHigherOrderNoZeros)
-      zscore <- aveHigherOrderNoZeros
-      dfsorted <- data.frame(genename, zscore)
-      rownames(dfsorted) <- 1:nrow(dfsorted)
-      
-      ranked <- cbind(rankedNoSars2, dfsorted)
-    }
-    write.csv(ranked, outfile)
-  }
-}
-
-```
 

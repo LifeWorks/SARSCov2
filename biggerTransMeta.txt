@@ -1,0 +1,554 @@
+column_names	experiment	host	virus	variant	dose	time
+EB1_WT_0h__b	ehuh1	Huh cells	Ebola	WT	unknown	0h
+EB1_WT_0h__p	ehuh1	Huh cells	Ebola	WT	unknown	0h
+EB1_WT_00h__b	ehuh1	Huh cells	Ebola	WT	unknown	00h
+EB1_WT_00h__p	ehuh1	Huh cells	Ebola	WT	unknown	00h
+EB1_WT_8h__b	ehuh1	Huh cells	Ebola	WT	unknown	8h
+EB1_WT_8h__p	ehuh1	Huh cells	Ebola	WT	unknown	8h
+EB1_WT_18h__b	ehuh1	Huh cells	Ebola	WT	unknown	18h
+EB1_WT_18h__p	ehuh1	Huh cells	Ebola	WT	unknown	18h
+EB1_WT_24h__b	ehuh1	Huh cells	Ebola	WT	unknown	24h
+EB1_WT_24h__p	ehuh1	Huh cells	Ebola	WT	unknown	24h
+EB1_WT_48h__b	ehuh1	Huh cells	Ebola	WT	unknown	48h
+EB1_WT_48h__p	ehuh1	Huh cells	Ebola	WT	unknown	48h
+EB1_mucin_0h__b	ehuh1	Huh cells	Ebola	mucin	unknown	0h
+EB1_mucin_0h__p	ehuh1	Huh cells	Ebola	mucin	unknown	0h
+EB1_mucin_00h__b	ehuh1	Huh cells	Ebola	mucin	unknown	00h
+EB1_mucin_00h__p	ehuh1	Huh cells	Ebola	mucin	unknown	00h
+EB1_mucin_8h__b	ehuh1	Huh cells	Ebola	mucin	unknown	8h
+EB1_mucin_8h__p	ehuh1	Huh cells	Ebola	mucin	unknown	8h
+EB1_mucin_18h__b	ehuh1	Huh cells	Ebola	mucin	unknown	18h
+EB1_mucin_18h__p	ehuh1	Huh cells	Ebola	mucin	unknown	18h
+EB1_mucin_24h__b	ehuh1	Huh cells	Ebola	mucin	unknown	24h
+EB1_mucin_24h__p	ehuh1	Huh cells	Ebola	mucin	unknown	24h
+EB1_mucin_48h__b	ehuh1	Huh cells	Ebola	mucin	unknown	48h
+EB1_mucin_48h__p	ehuh1	Huh cells	Ebola	mucin	unknown	48h
+EB1_ssGP_0h__b	ehuh1	Huh cells	Ebola	ssGP	unknown	0h
+EB1_ssGP_0h__p	ehuh1	Huh cells	Ebola	ssGP	unknown	0h
+EB1_ssGP_00h__b	ehuh1	Huh cells	Ebola	ssGP	unknown	00h
+EB1_ssGP_00h__p	ehuh1	Huh cells	Ebola	ssGP	unknown	00h
+EB1_ssGP_8h__b	ehuh1	Huh cells	Ebola	ssGP	unknown	8h
+EB1_ssGP_8h__p	ehuh1	Huh cells	Ebola	ssGP	unknown	8h
+EB1_ssGP_18h__b	ehuh1	Huh cells	Ebola	ssGP	unknown	18h
+EB1_ssGP_18h__p	ehuh1	Huh cells	Ebola	ssGP	unknown	18h
+EB1_ssGP_24h__b	ehuh1	Huh cells	Ebola	ssGP	unknown	24h
+EB1_ssGP_24h__p	ehuh1	Huh cells	Ebola	ssGP	unknown	24h
+EB1_ssGP_48h__b	ehuh1	Huh cells	Ebola	ssGP	unknown	48h
+EB1_ssGP_48h__p	ehuh1	Huh cells	Ebola	ssGP	unknown	48h
+EB2_WT_deltaVP30_0h__b	ehuh3	Huh cells	Ebola	WT	moi10	0h
+EB2_WT_deltaVP30_0h__p	ehuh3	Huh cells	Ebola	WT	moi10	0h
+EB2_WT_deltaVP30_8h__b	ehuh3	Huh cells	Ebola	WT	moi10	8h
+EB2_WT_deltaVP30_8h__p	ehuh3	Huh cells	Ebola	WT	moi10	8h
+EB2_WT_deltaVP30_24h__b	ehuh3	Huh cells	Ebola	WT	moi10	24h
+EB2_WT_deltaVP30_24h__p	ehuh3	Huh cells	Ebola	WT	moi10	24h
+EB2_WT_deltaVP30_48h__b	ehuh3	Huh cells	Ebola	WT	moi10	48h
+EB2_WT_deltaVP30_48h__p	ehuh3	Huh cells	Ebola	WT	moi10	48h
+EB2_WT_deltaVP30_72h__b	ehuh3	Huh cells	Ebola	WT	moi10	72h
+EB2_WT_deltaVP30_72h__p	ehuh3	Huh cells	Ebola	WT	moi10	72h
+H7N9_calu3_WT_0hr__b	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	0h
+H7N9_calu3_WT_0hr__p	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	0h
+H7N9_calu3_WT_7hr__b	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	7h
+H7N9_calu3_WT_7hr__p	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	7h
+H7N9_calu3_WT_12hr__b	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	12h
+H7N9_calu3_WT_12hr__p	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	12h
+H7N9_calu3_WT_24hr__b	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	24h
+H7N9_calu3_WT_24hr__p	icl102	Calu3 cells	H7N9	H7N9_WT	moi1	24h
+H7N9_calu3_FM_0hr__b	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	0h
+H7N9_calu3_FM_0hr__p	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	0h
+H7N9_calu3_FM_7hr__b	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	7h
+H7N9_calu3_FM_7hr__p	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	7h
+H7N9_calu3_FM_12hr__b	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	12h
+H7N9_calu3_FM_12hr__p	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	12h
+H7N9_calu3_FM_24hr__b	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	24h
+H7N9_calu3_FM_24hr__p	icl102	Calu3 cells	H7N9	H7N9_FM	moi1	24h
+H7N9_calu3_X691_0hr__b	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	0h
+H7N9_calu3_X691_0hr__p	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	0h
+H7N9_calu3_X691_7hr__b	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	7h
+H7N9_calu3_X691_7hr__p	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	7h
+H7N9_calu3_X691_12hr__b	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	12h
+H7N9_calu3_X691_12hr__p	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	12h
+H7N9_calu3_X691_24hr__b	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	24h
+H7N9_calu3_X691_24hr__p	icl102	Calu3 cells	H7N9	H7N9_X691	moi1	24h
+H5N1_calu3_WT_0hr__b	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	0h
+H5N1_calu3_WT_0hr__p	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	0h
+H5N1_calu3_WT_7hr__b	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	7h
+H5N1_calu3_WT_7hr__p	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	7h
+H5N1_calu3_WT_12hr__b	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	12h
+H5N1_calu3_WT_12hr__p	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	12h
+H5N1_calu3_WT_24hr__b	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	24h
+H5N1_calu3_WT_24hr__p	icl103	Calu3 cells	H5N1WT	H5N1_WT	moi1	24h
+H5N1_calu3_X627E_0hr__b	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	0h
+H5N1_calu3_X627E_0hr__p	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	0h
+H5N1_calu3_X627E_7hr__b	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	7h
+H5N1_calu3_X627E_7hr__p	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	7h
+H5N1_calu3_X627E_12hr__b	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	12h
+H5N1_calu3_X627E_12hr__p	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	12h
+H5N1_calu3_X627E_24hr__b	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	24h
+H5N1_calu3_X627E_24hr__p	icl103	Calu3 cells	H5N1PB2	H5N1_X627E	moi1	24h
+H5N1_calu3_NS1_0hr__b	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	0h
+H5N1_calu3_NS1_0hr__p	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	0h
+H5N1_calu3_NS1_7hr__b	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	7h
+H5N1_calu3_NS1_7hr__p	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	7h
+H5N1_calu3_NS1_12hr__b	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	12h
+H5N1_calu3_NS1_12hr__p	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	12h
+H5N1_calu3_NS1_24hr__b	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	24h
+H5N1_calu3_NS1_24hr__p	icl103	Calu3 cells	H5N1NS1	H5N1_NS1	moi1	24h
+H1N1_WT_calu3_Cal04_0hr__b	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	0h
+H1N1_WT_calu3_Cal04_0hr__p	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	0h
+H1N1_WT_calu3_Cal04_7hr__b	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	7h
+H1N1_WT_calu3_Cal04_7hr__p	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	7h
+H1N1_WT_calu3_Cal04_12hr__b	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	12h
+H1N1_WT_calu3_Cal04_12hr__p	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	12h
+H1N1_WT_calu3_Cal04_24hr__b	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	24h
+H1N1_WT_calu3_Cal04_24hr__p	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	24h
+H1N1_WT_calu3_Cal04_36hr__b	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	36h
+H1N1_WT_calu3_Cal04_36hr__p	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	36h
+H1N1_WT_calu3_Cal04_48hr__b	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	48h
+H1N1_WT_calu3_Cal04_48hr__p	icl104	Calu3 cells	H1N1WT	H1N1_WT	moi3	48h
+mouse_H1N1_WT_1d__b	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	1d
+mouse_H1N1_WT_1d__p	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	1d
+mouse_H1N1_WT_2d__b	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	2d
+mouse_H1N1_WT_2d__p	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	2d
+mouse_H1N1_WT_4d__b	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	4d
+mouse_H1N1_WT_4d__p	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	4d
+mouse_H1N1_WT_7d__b	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	7d
+mouse_H1N1_WT_7d__p	im101	mouse lung	H1N1WT	H1N1_WT	1.00E+04	7d
+mouse_H5N1_WT_1d__b	im101	mouse lung	H5N1WT	H5N1_WT	476	1d
+mouse_H5N1_WT_1d__p	im101	mouse lung	H5N1WT	H5N1_WT	476	1d
+mouse_H5N1_WT_2d__b	im101	mouse lung	H5N1WT	H5N1_WT	476	2d
+mouse_H5N1_WT_2d__p	im101	mouse lung	H5N1WT	H5N1_WT	476	2d
+mouse_H5N1_WT_4d__b	im101	mouse lung	H5N1WT	H5N1_WT	476	4d
+mouse_H5N1_WT_4d__p	im101	mouse lung	H5N1WT	H5N1_WT	476	4d
+mouse_H5N1_NS1_124_1d__b	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_1d__p	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_2d__b	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_2d__p	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_4d__b	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_4d__p	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_7d__b	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H5N1_NS1_124_7d__p	im101	mouse lung	H5N1NS1	H5N1_NS1	1100	124
+mouse_H7N9_WT_1d__b	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	1d
+mouse_H7N9_WT_1d__p	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	1d
+mouse_H7N9_WT_2d__b	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	2d
+mouse_H7N9_WT_2d__p	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	2d
+mouse_H7N9_WT_4d__b	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	4d
+mouse_H7N9_WT_4d__p	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	4d
+mouse_H7N9_WT_7d__b	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	7d
+mouse_H7N9_WT_7d__p	im102	mouse lung	H7N9	H7N9_WT	1.00E+04	7d
+mouse_H7N9_FM_1d__b	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	1d
+mouse_H7N9_FM_1d__p	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	1d
+mouse_H7N9_FM_2d__b	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	2d
+mouse_H7N9_FM_2d__p	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	2d
+mouse_H7N9_FM_4d__b	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	4d
+mouse_H7N9_FM_4d__p	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	4d
+mouse_H7N9_FM_7d__b	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	7d
+mouse_H7N9_FM_7d__p	im102	mouse lung	H7N9	H7N9_FM	1.00E+04	7d
+mouse_H7N9_691_1d__b	im102	mouse lung	H7N9	H7N9_691	1.00E+04	1d
+mouse_H7N9_691_1d__p	im102	mouse lung	H7N9	H7N9_691	1.00E+04	1d
+mouse_H7N9_691_2d__b	im102	mouse lung	H7N9	H7N9_691	1.00E+04	2d
+mouse_H7N9_691_2d__p	im102	mouse lung	H7N9	H7N9_691	1.00E+04	2d
+mouse_H7N9_691_4d__b	im102	mouse lung	H7N9	H7N9_691	1.00E+04	4d
+mouse_H7N9_691_4d__p	im102	mouse lung	H7N9	H7N9_691	1.00E+04	4d
+mouse_H7N9_691_7d__b	im102	mouse lung	H7N9	H7N9_691	1.00E+04	7d
+mouse_H7N9_691_7d__p	im102	mouse lung	H7N9	H7N9_691	1.00E+04	7d
+mouse_H5N1_WT_1d__b.1	im103	mouse lung	H5N1WT	H5N1_WT	1.00E+04	1d
+mouse_H5N1_WT_1d__p.1	im103	mouse lung	H5N1WT	H5N1_WT	1.00E+04	1d
+mouse_H5N1_WT_2d__b.1	im103	mouse lung	H5N1WT	H5N1_WT	1.00E+04	2d
+mouse_H5N1_WT_2d__p.1	im103	mouse lung	H5N1WT	H5N1_WT	1.00E+04	2d
+mouse_H5N1_WT_4d__b.1	im103	mouse lung	H5N1WT	H5N1_WT	1.00E+04	4d
+mouse_H5N1_WT_4d__p.1	im103	mouse lung	H5N1WT	H5N1_WT	1.00E+04	4d
+mouse_H5N1_NS1trunc124_1d__b	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	1d
+mouse_H5N1_NS1trunc124_1d__p	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	1d
+mouse_H5N1_NS1trunc124_2d__b	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	2d
+mouse_H5N1_NS1trunc124_2d__p	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	2d
+mouse_H5N1_NS1trunc124_4d__b	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	4d
+mouse_H5N1_NS1trunc124_4d__p	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	4d
+mouse_H5N1_NS1trunc124_7d__b	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	7d
+mouse_H5N1_NS1trunc124_7d__p	im103	mouse lung	H5N1NS1	H5N1_NS1	1.00E+04	7d
+calu3_MERS_WT_0hr__b	mcl1	Calu3 cells	MERS	WT	moi5	0h
+calu3_MERS_WT_0hr__p	mcl1	Calu3 cells	MERS	WT	moi5	0h
+calu3_MERS_WT_7hr__b	mcl1	Calu3 cells	MERS	WT	moi5	7h
+calu3_MERS_WT_7hr__p	mcl1	Calu3 cells	MERS	WT	moi5	7h
+calu3_MERS_WT_12hr__b	mcl1	Calu3 cells	MERS	WT	moi5	12h
+calu3_MERS_WT_12hr__p	mcl1	Calu3 cells	MERS	WT	moi5	12h
+calu3_MERS_WT_24hr__b	mcl1	Calu3 cells	MERS	WT	moi5	24h
+calu3_MERS_WT_24hr__p	mcl1	Calu3 cells	MERS	WT	moi5	24h
+calu3_MERS_RFP_MERS_0hr__b	mcl1	Calu3 cells	MERS	RFP	moi5	0h
+calu3_MERS_RFP_MERS_0hr__p	mcl1	Calu3 cells	MERS	RFP	moi5	0h
+calu3_MERS_RFP_MERS_7hr__b	mcl1	Calu3 cells	MERS	RFP	moi5	7h
+calu3_MERS_RFP_MERS_7hr__p	mcl1	Calu3 cells	MERS	RFP	moi5	7h
+calu3_MERS_RFP_MERS_12hr__b	mcl1	Calu3 cells	MERS	RFP	moi5	12h
+calu3_MERS_RFP_MERS_12hr__p	mcl1	Calu3 cells	MERS	RFP	moi5	12h
+calu3_MERS_RFP_MERS_24hr__b	mcl1	Calu3 cells	MERS	RFP	moi5	24h
+calu3_MERS_RFP_MERS_24hr__p	mcl1	Calu3 cells	MERS	RFP	moi5	24h
+calu3_MERS_dNSP16_MERS_0hr__b	mcl1	Calu3 cells	MERS	dNSP16	moi5	0h
+calu3_MERS_dNSP16_MERS_0hr__p	mcl1	Calu3 cells	MERS	dNSP16	moi5	0h
+calu3_MERS_dNSP16_MERS_7hr__b	mcl1	Calu3 cells	MERS	dNSP16	moi5	7h
+calu3_MERS_dNSP16_MERS_7hr__p	mcl1	Calu3 cells	MERS	dNSP16	moi5	7h
+calu3_MERS_dNSP16_MERS_12hr__b	mcl1	Calu3 cells	MERS	dNSP16	moi5	12h
+calu3_MERS_dNSP16_MERS_12hr__p	mcl1	Calu3 cells	MERS	dNSP16	moi5	12h
+calu3_MERS_dNSP16_MERS_24hr__b	mcl1	Calu3 cells	MERS	dNSP16	moi5	24h
+calu3_MERS_dNSP16_MERS_24hr__p	mcl1	Calu3 cells	MERS	dNSP16	moi5	24h
+calu3_MERS_d4B_MERS_0hr__b	mcl1	Calu3 cells	MERS	d4B	moi5	0h
+calu3_MERS_d4B_MERS_0hr__p	mcl1	Calu3 cells	MERS	d4B	moi5	0h
+calu3_MERS_d4B_MERS_7hr__b	mcl1	Calu3 cells	MERS	d4B	moi5	7h
+calu3_MERS_d4B_MERS_7hr__p	mcl1	Calu3 cells	MERS	d4B	moi5	7h
+calu3_MERS_d4B_MERS_12hr__b	mcl1	Calu3 cells	MERS	d4B	moi5	12h
+calu3_MERS_d4B_MERS_12hr__p	mcl1	Calu3 cells	MERS	d4B	moi5	12h
+calu3_MERS_d4B_MERS_24hr__b	mcl1	Calu3 cells	MERS	d4B	moi5	24h
+calu3_MERS_d4B_MERS_24hr__p	mcl1	Calu3 cells	MERS	d4B	moi5	24h
+calu3_MERS_d3_5_MERS_0hr__b	mcl1	Calu3 cells	MERS	d3_5	moi5	0h
+calu3_MERS_d3_5_MERS_0hr__p	mcl1	Calu3 cells	MERS	d3_5	moi5	0h
+calu3_MERS_d3_5_MERS_7hr__b	mcl1	Calu3 cells	MERS	d3_5	moi5	7h
+calu3_MERS_d3_5_MERS_7hr__p	mcl1	Calu3 cells	MERS	d3_5	moi5	7h
+calu3_MERS_d3_5_MERS_12hr__b	mcl1	Calu3 cells	MERS	d3_5	moi5	12h
+calu3_MERS_d3_5_MERS_12hr__p	mcl1	Calu3 cells	MERS	d3_5	moi5	12h
+calu3_MERS_d3_5_MERS_24hr__b	mcl1	Calu3 cells	MERS	d3_5	moi5	24h
+calu3_MERS_d3_5_MERS_24hr__p	mcl1	Calu3 cells	MERS	d3_5	moi5	24h
+fb_MERS_WT_0HRS__b	mfb1	Human fibroblasts	MERS	WT	moi5	0h
+fb_MERS_WT_0HRS__p	mfb1	Human fibroblasts	MERS	WT	moi5	0h
+fb_MERS_WT_12HRS__b	mfb1	Human fibroblasts	MERS	WT	moi5	12h
+fb_MERS_WT_12HRS__p	mfb1	Human fibroblasts	MERS	WT	moi5	12h
+fb_MERS_WT_24HRS__b	mfb1	Human fibroblasts	MERS	WT	moi5	24h
+fb_MERS_WT_24HRS__p	mfb1	Human fibroblasts	MERS	WT	moi5	24h
+fb_MERS_WT_36HRS__b	mfb1	Human fibroblasts	MERS	WT	moi5	36h
+fb_MERS_WT_36HRS__p	mfb1	Human fibroblasts	MERS	WT	moi5	36h
+fb_MERS_WT_48HRS__b	mfb1	Human fibroblasts	MERS	WT	moi5	48h
+fb_MERS_WT_48HRS__p	mfb1	Human fibroblasts	MERS	WT	moi5	48h
+fb_MERS_WT_0HRS__b.1	mfb2	Human fibroblasts	MERS	WT	moi5	0h
+fb_MERS_WT_0HRS__p.1	mfb2	Human fibroblasts	MERS	WT	moi5	0h
+fb_MERS_WT_12HRS__b.1	mfb2	Human fibroblasts	MERS	WT	moi5	12h
+fb_MERS_WT_12HRS__p.1	mfb2	Human fibroblasts	MERS	WT	moi5	12h
+fb_MERS_WT_24HRS__b.1	mfb2	Human fibroblasts	MERS	WT	moi5	24h
+fb_MERS_WT_24HRS__p.1	mfb2	Human fibroblasts	MERS	WT	moi5	24h
+fb_MERS_WT_36HRS__b.1	mfb2	Human fibroblasts	MERS	WT	moi5	36h
+fb_MERS_WT_36HRS__p.1	mfb2	Human fibroblasts	MERS	WT	moi5	36h
+fb_MERS_WT_48HRS__b.1	mfb2	Human fibroblasts	MERS	WT	moi5	48h
+fb_MERS_WT_48HRS__p.1	mfb2	Human fibroblasts	MERS	WT	moi5	48h
+fb_MERS_WT_0HRS__b.2	mfb3	Human fibroblasts	MERS	WT	moi5	0h
+fb_MERS_WT_0HRS__p.2	mfb3	Human fibroblasts	MERS	WT	moi5	0h
+fb_MERS_WT_12HRS__b.2	mfb3	Human fibroblasts	MERS	WT	moi5	12h
+fb_MERS_WT_12HRS__p.2	mfb3	Human fibroblasts	MERS	WT	moi5	12h
+fb_MERS_WT_24HRS__b.2	mfb3	Human fibroblasts	MERS	WT	moi5	24h
+fb_MERS_WT_24HRS__p.2	mfb3	Human fibroblasts	MERS	WT	moi5	24h
+fb_MERS_WT_36HRS__b.2	mfb3	Human fibroblasts	MERS	WT	moi5	36h
+fb_MERS_WT_36HRS__p.2	mfb3	Human fibroblasts	MERS	WT	moi5	36h
+fb_MERS_WT_48HRS__b.2	mfb3	Human fibroblasts	MERS	WT	moi5	48h
+fb_MERS_WT_48HRS__p.2	mfb3	Human fibroblasts	MERS	WT	moi5	48h
+hae_MERS_WT_0HRS__b	mhae1	Human airway epithelium	MERS	WT	moi5	0h
+hae_MERS_WT_0HRS__p	mhae1	Human airway epithelium	MERS	WT	moi5	0h
+hae_MERS_WT_12HRS__b	mhae1	Human airway epithelium	MERS	WT	moi5	12h
+hae_MERS_WT_12HRS__p	mhae1	Human airway epithelium	MERS	WT	moi5	12h
+hae_MERS_WT_24HRS__b	mhae1	Human airway epithelium	MERS	WT	moi5	24h
+hae_MERS_WT_24HRS__p	mhae1	Human airway epithelium	MERS	WT	moi5	24h
+hae_MERS_WT_36HRS__b	mhae1	Human airway epithelium	MERS	WT	moi5	36h
+hae_MERS_WT_36HRS__p	mhae1	Human airway epithelium	MERS	WT	moi5	36h
+hae_MERS_WT_48HRS__b	mhae1	Human airway epithelium	MERS	WT	moi5	48h
+hae_MERS_WT_48HRS__p	mhae1	Human airway epithelium	MERS	WT	moi5	48h
+hae_MERS_WT_0HRS__b.1	mhae2	Human airway epithelium	MERS	WT	moi5	0h
+hae_MERS_WT_0HRS__p.1	mhae2	Human airway epithelium	MERS	WT	moi5	0h
+hae_MERS_WT_12HRS__b.1	mhae2	Human airway epithelium	MERS	WT	moi5	12h
+hae_MERS_WT_12HRS__p.1	mhae2	Human airway epithelium	MERS	WT	moi5	12h
+hae_MERS_WT_24HRS__b.1	mhae2	Human airway epithelium	MERS	WT	moi5	24h
+hae_MERS_WT_24HRS__p.1	mhae2	Human airway epithelium	MERS	WT	moi5	24h
+hae_MERS_WT_36HRS__b.1	mhae2	Human airway epithelium	MERS	WT	moi5	36h
+hae_MERS_WT_36HRS__p.1	mhae2	Human airway epithelium	MERS	WT	moi5	36h
+hae_MERS_WT_48HRS__b.1	mhae2	Human airway epithelium	MERS	WT	moi5	48h
+hae_MERS_WT_48HRS__p.1	mhae2	Human airway epithelium	MERS	WT	moi5	48h
+hae_MERS_WT_0HRS__b.2	mhae3	Human airway epithelium	MERS	WT	moi5	0h
+hae_MERS_WT_0HRS__p.2	mhae3	Human airway epithelium	MERS	WT	moi5	0h
+hae_MERS_WT_12HRS__b.2	mhae3	Human airway epithelium	MERS	WT	moi5	12h
+hae_MERS_WT_12HRS__p.2	mhae3	Human airway epithelium	MERS	WT	moi5	12h
+hae_MERS_WT_24HRS__b.2	mhae3	Human airway epithelium	MERS	WT	moi5	24h
+hae_MERS_WT_24HRS__p.2	mhae3	Human airway epithelium	MERS	WT	moi5	24h
+hae_MERS_WT_36HRS__b.2	mhae3	Human airway epithelium	MERS	WT	moi5	36h
+hae_MERS_WT_36HRS__p.2	mhae3	Human airway epithelium	MERS	WT	moi5	36h
+hae_MERS_WT_48HRS__b.2	mhae3	Human airway epithelium	MERS	WT	moi5	48h
+hae_MERS_WT_48HRS__p.2	mhae3	Human airway epithelium	MERS	WT	moi5	48h
+mmv_MERS_WT_0h__b	mmve1	Human microvascular endothelium	MERS	WT	moi5	0h
+mmv_MERS_WT_0h__p	mmve1	Human microvascular endothelium	MERS	WT	moi5	0h
+mmv_MERS_WT_12h__b	mmve1	Human microvascular endothelium	MERS	WT	moi5	12h
+mmv_MERS_WT_12h__p	mmve1	Human microvascular endothelium	MERS	WT	moi5	12h
+mmv_MERS_WT_24h__b	mmve1	Human microvascular endothelium	MERS	WT	moi5	24h
+mmv_MERS_WT_24h__p	mmve1	Human microvascular endothelium	MERS	WT	moi5	24h
+mmv_MERS_WT_36h__b	mmve1	Human microvascular endothelium	MERS	WT	moi5	36h
+mmv_MERS_WT_36h__p	mmve1	Human microvascular endothelium	MERS	WT	moi5	36h
+mmv_MERS_WT_48h__b	mmve1	Human microvascular endothelium	MERS	WT	moi5	48h
+mmv_MERS_WT_48h__p	mmve1	Human microvascular endothelium	MERS	WT	moi5	48h
+mmv_MERS_WT_0HRS__b	mmve2	Human microvascular endothelium	MERS	WT	moi5	0h
+mmv_MERS_WT_0HRS__p	mmve2	Human microvascular endothelium	MERS	WT	moi5	0h
+mmv_MERS_WT_12HRS__b	mmve2	Human microvascular endothelium	MERS	WT	moi5	12h
+mmv_MERS_WT_12HRS__p	mmve2	Human microvascular endothelium	MERS	WT	moi5	12h
+mmv_MERS_WT_24HRS__b	mmve2	Human microvascular endothelium	MERS	WT	moi5	24h
+mmv_MERS_WT_24HRS__p	mmve2	Human microvascular endothelium	MERS	WT	moi5	24h
+mmv_MERS_WT_36HRS__b	mmve2	Human microvascular endothelium	MERS	WT	moi5	36h
+mmv_MERS_WT_36HRS__p	mmve2	Human microvascular endothelium	MERS	WT	moi5	36h
+mmv_MERS_WT_48HRS__b	mmve2	Human microvascular endothelium	MERS	WT	moi5	48h
+mmv_MERS_WT_48HRS__p	mmve2	Human microvascular endothelium	MERS	WT	moi5	48h
+mmv_MERS_WT_0HRS__b.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	0h
+mmv_MERS_WT_0HRS__p.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	0h
+mmv_MERS_WT_12HRS__b.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	12h
+mmv_MERS_WT_12HRS__p.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	12h
+mmv_MERS_WT_24HRS__b.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	24h
+mmv_MERS_WT_24HRS__p.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	24h
+mmv_MERS_WT_36HRS__b.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	36h
+mmv_MERS_WT_36HRS__p.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	36h
+mmv_MERS_WT_48HRS__b.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	48h
+mmv_MERS_WT_48HRS__p.1	mmve3	Human microvascular endothelium	MERS	WT	moi5	48h
+Day2_MERS10e4_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+04	2d
+Day2_MERS10e4_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+04	2d
+Day4_MERS10e4_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+04	4d
+Day4_MERS10e4_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+04	4d
+Day7_MERS10e4_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+04	7d
+Day7_MERS10e4_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+04	7d
+Day2_MERS10e5_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+05	2d
+Day2_MERS10e5_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+05	2d
+Day4_MERS10e5_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+05	4d
+Day4_MERS10e5_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+05	4d
+Day7_MERS10e5_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+05	7d
+Day7_MERS10e5_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+05	7d
+Day2_MERS10e6_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+06	2d
+Day2_MERS10e6_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+06	2d
+Day4_MERS10e6_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+06	4d
+Day4_MERS10e6_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+06	4d
+Day7_MERS10e6_Vs_Mock_b	mm001	mouse lung	MERS	WT	1.00E+06	7d
+Day7_MERS10e6_Vs_Mock_p	mm001	mouse lung	MERS	WT	1.00E+06	7d
+calu3_SARS_WT_0H._b	scl005	Calu3 cells	SARS	WT	moi5	0h
+calu3_SARS_WT_0H._p	scl005	Calu3 cells	SARS	WT	moi5	0h
+calu3_SARS_WT_3H._b	scl005	Calu3 cells	SARS	WT	moi5	3h
+calu3_SARS_WT_3H._p	scl005	Calu3 cells	SARS	WT	moi5	3h
+calu3_SARS_WT_7H._b	scl005	Calu3 cells	SARS	WT	moi5	7h
+calu3_SARS_WT_7H._p	scl005	Calu3 cells	SARS	WT	moi5	7h
+calu3_SARS_WT_12H._b	scl005	Calu3 cells	SARS	WT	moi5	12h
+calu3_SARS_WT_12H._p	scl005	Calu3 cells	SARS	WT	moi5	12h
+calu3_SARS_WT_24H._b	scl005	Calu3 cells	SARS	WT	moi5	24h
+calu3_SARS_WT_24H._p	scl005	Calu3 cells	SARS	WT	moi5	24h
+calu3_SARS_WT_30H._b	scl005	Calu3 cells	SARS	WT	moi5	30h
+calu3_SARS_WT_30H._p	scl005	Calu3 cells	SARS	WT	moi5	30h
+calu3_SARS_WT_36H._b	scl005	Calu3 cells	SARS	WT	moi5	36h
+calu3_SARS_WT_36H._p	scl005	Calu3 cells	SARS	WT	moi5	36h
+calu3_SARS_WT_48H._b	scl005	Calu3 cells	SARS	WT	moi5	48h
+calu3_SARS_WT_48H._p	scl005	Calu3 cells	SARS	WT	moi5	48h
+calu3_SARS_WT_54H._b	scl005	Calu3 cells	SARS	WT	moi5	54h
+calu3_SARS_WT_54H._p	scl005	Calu3 cells	SARS	WT	moi5	54h
+calu3_SARS_WT_60H._b	scl005	Calu3 cells	SARS	WT	moi5	60h
+calu3_SARS_WT_60H._p	scl005	Calu3 cells	SARS	WT	moi5	60h
+calu3_SARS_WT_72H._b	scl005	Calu3 cells	SARS	WT	moi5	72h
+calu3_SARS_WT_72H._p	scl005	Calu3 cells	SARS	WT	moi5	72h
+calu3_SARS_DORF6_0H._b	scl005	Calu3 cells	SARS	DORF6	moi5	0h
+calu3_SARS_DORF6_0H._p	scl005	Calu3 cells	SARS	DORF6	moi5	0h
+calu3_SARS_DORF6_3H._b	scl005	Calu3 cells	SARS	DORF6	moi5	3h
+calu3_SARS_DORF6_3H._p	scl005	Calu3 cells	SARS	DORF6	moi5	3h
+calu3_SARS_DORF6_7H._b	scl005	Calu3 cells	SARS	DORF6	moi5	7h
+calu3_SARS_DORF6_7H._p	scl005	Calu3 cells	SARS	DORF6	moi5	7h
+calu3_SARS_DORF6_12H._b	scl005	Calu3 cells	SARS	DORF6	moi5	12h
+calu3_SARS_DORF6_12H._p	scl005	Calu3 cells	SARS	DORF6	moi5	12h
+calu3_SARS_DORF6_24H._b	scl005	Calu3 cells	SARS	DORF6	moi5	24h
+calu3_SARS_DORF6_24H._p	scl005	Calu3 cells	SARS	DORF6	moi5	24h
+calu3_SARS_DORF6_30H._b	scl005	Calu3 cells	SARS	DORF6	moi5	30h
+calu3_SARS_DORF6_30H._p	scl005	Calu3 cells	SARS	DORF6	moi5	30h
+calu3_SARS_DORF6_36H._b	scl005	Calu3 cells	SARS	DORF6	moi5	36h
+calu3_SARS_DORF6_36H._p	scl005	Calu3 cells	SARS	DORF6	moi5	36h
+calu3_SARS_DORF6_48H._b	scl005	Calu3 cells	SARS	DORF6	moi5	48h
+calu3_SARS_DORF6_48H._p	scl005	Calu3 cells	SARS	DORF6	moi5	48h
+calu3_SARS_DORF6_54H._b	scl005	Calu3 cells	SARS	DORF6	moi5	54h
+calu3_SARS_DORF6_54H._p	scl005	Calu3 cells	SARS	DORF6	moi5	54h
+calu3_SARS_DORF6_60H._b	scl005	Calu3 cells	SARS	DORF6	moi5	60h
+calu3_SARS_DORF6_60H._p	scl005	Calu3 cells	SARS	DORF6	moi5	60h
+calu3_SARS_DORF6_72H._b	scl005	Calu3 cells	SARS	DORF6	moi5	72h
+calu3_SARS_DORF6_72H._p	scl005	Calu3 cells	SARS	DORF6	moi5	72h
+calu3_SARS_WT_0H._b.1	scl006	Calu3 cells	SARS	WT	moi1	0h
+calu3_SARS_WT_0H._p.1	scl006	Calu3 cells	SARS	WT	moi1	0h
+calu3_SARS_WT_7H._b.1	scl006	Calu3 cells	SARS	WT	moi1	7h
+calu3_SARS_WT_7H._p.1	scl006	Calu3 cells	SARS	WT	moi1	7h
+calu3_SARS_WT_12H._b.1	scl006	Calu3 cells	SARS	WT	moi1	12h
+calu3_SARS_WT_12H._p.1	scl006	Calu3 cells	SARS	WT	moi1	12h
+calu3_SARS_WT_24H._b.1	scl006	Calu3 cells	SARS	WT	moi1	24h
+calu3_SARS_WT_24H._p.1	scl006	Calu3 cells	SARS	WT	moi1	24h
+calu3_SARS_WT_30H._b.1	scl006	Calu3 cells	SARS	WT	moi1	30h
+calu3_SARS_WT_30H._p.1	scl006	Calu3 cells	SARS	WT	moi1	30h
+calu3_SARS_WT_36H._b.1	scl006	Calu3 cells	SARS	WT	moi1	36h
+calu3_SARS_WT_36H._p.1	scl006	Calu3 cells	SARS	WT	moi1	36h
+calu3_SARS_WT_48H._b.1	scl006	Calu3 cells	SARS	WT	moi1	48h
+calu3_SARS_WT_48H._p.1	scl006	Calu3 cells	SARS	WT	moi1	48h
+calu3_SARS_WT_54H._b.1	scl006	Calu3 cells	SARS	WT	moi1	54h
+calu3_SARS_WT_54H._p.1	scl006	Calu3 cells	SARS	WT	moi1	54h
+calu3_SARS_WT_60H._b.1	scl006	Calu3 cells	SARS	WT	moi1	60h
+calu3_SARS_WT_60H._p.1	scl006	Calu3 cells	SARS	WT	moi1	60h
+calu3_SARS_WT_72H._b.1	scl006	Calu3 cells	SARS	WT	moi1	72h
+calu3_SARS_WT_72H._p.1	scl006	Calu3 cells	SARS	WT	moi1	72h
+calu3_SARS_BatSRBD_0H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	0h
+calu3_SARS_BatSRBD_0H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	0h
+calu3_SARS_BatSRBD_7H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	7h
+calu3_SARS_BatSRBD_7H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	7h
+calu3_SARS_BatSRBD_12H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	12h
+calu3_SARS_BatSRBD_12H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	12h
+calu3_SARS_BatSRBD_24H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	24h
+calu3_SARS_BatSRBD_24H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	24h
+calu3_SARS_BatSRBD_30H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	30h
+calu3_SARS_BatSRBD_30H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	30h
+calu3_SARS_BatSRBD_36H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	36h
+calu3_SARS_BatSRBD_36H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	36h
+calu3_SARS_BatSRBD_48H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	48h
+calu3_SARS_BatSRBD_48H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	48h
+calu3_SARS_BatSRBD_54H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	54h
+calu3_SARS_BatSRBD_54H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	54h
+calu3_SARS_BatSRBD_60H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	60h
+calu3_SARS_BatSRBD_60H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	60h
+calu3_SARS_BatSRBD_72H._b	scl006	Calu3 cells	SARS	BatSRBD	moi1	72h
+calu3_SARS_BatSRBD_72H._p	scl006	Calu3 cells	SARS	BatSRBD	moi1	72h
+calu3_SARS__b_WT_moi5_0h	scl008	Calu3 cells	SARS	WT	moi1	0h
+calu3_SARS__p_WT_moi5_0h	scl008	Calu3 cells	SARS	WT	moi1	0h
+calu3_SARS__b_WT_moi5_7h	scl008	Calu3 cells	SARS	WT	moi1	7h
+calu3_SARS__p_WT_moi5_7h	scl008	Calu3 cells	SARS	WT	moi1	7h
+calu3_SARS__b_WT_moi5_12h	scl008	Calu3 cells	SARS	WT	moi1	12h
+calu3_SARS__p_WT_moi5_12h	scl008	Calu3 cells	SARS	WT	moi1	12h
+calu3_SARS__b_WT_moi5_24h	scl008	Calu3 cells	SARS	WT	moi1	24h
+calu3_SARS__p_WT_moi5_24h	scl008	Calu3 cells	SARS	WT	moi1	24h
+calu3_SARS__b_WT_moi5_36h	scl008	Calu3 cells	SARS	WT	moi1	36h
+calu3_SARS__p_WT_moi5_36h	scl008	Calu3 cells	SARS	WT	moi1	36h
+calu3_SARS__b_WT_moi5_48h	scl008	Calu3 cells	SARS	WT	moi1	48h
+calu3_SARS__p_WT_moi5_48h	scl008	Calu3 cells	SARS	WT	moi1	48h
+calu3_SARS__b_WT_moi5_60h	scl008	Calu3 cells	SARS	WT	moi1	60h
+calu3_SARS__p_WT_moi5_60h	scl008	Calu3 cells	SARS	WT	moi1	60h
+calu3_SARS__b_WT_moi5_72h	scl008	Calu3 cells	SARS	WT	moi1	72h
+calu3_SARS__p_WT_moi5_72h	scl008	Calu3 cells	SARS	WT	moi1	72h
+calu3_SARS__b_ExoNI_moi1_0h	scl008	Calu3 cells	SARS	ExoNI	moi1	0h
+calu3_SARS__p_ExoNI_moi1_0h	scl008	Calu3 cells	SARS	ExoNI	moi1	0h
+calu3_SARS__b_ExoNI_moi1_7h	scl008	Calu3 cells	SARS	ExoNI	moi1	7h
+calu3_SARS__p_ExoNI_moi1_7h	scl008	Calu3 cells	SARS	ExoNI	moi1	7h
+calu3_SARS__b_ExoNI_moi1_12h	scl008	Calu3 cells	SARS	ExoNI	moi1	12h
+calu3_SARS__p_ExoNI_moi1_12h	scl008	Calu3 cells	SARS	ExoNI	moi1	12h
+calu3_SARS__b_ExoNI_moi1_24h	scl008	Calu3 cells	SARS	ExoNI	moi1	24h
+calu3_SARS__p_ExoNI_moi1_24h	scl008	Calu3 cells	SARS	ExoNI	moi1	24h
+calu3_SARS__b_ExoNI_moi1_36h	scl008	Calu3 cells	SARS	ExoNI	moi1	36h
+calu3_SARS__p_ExoNI_moi1_36h	scl008	Calu3 cells	SARS	ExoNI	moi1	36h
+calu3_SARS__b_ExoNI_moi1_48h	scl008	Calu3 cells	SARS	ExoNI	moi1	48h
+calu3_SARS__p_ExoNI_moi1_48h	scl008	Calu3 cells	SARS	ExoNI	moi1	48h
+calu3_SARS__b_ExoNI_moi1_60h	scl008	Calu3 cells	SARS	ExoNI	moi1	60h
+calu3_SARS__p_ExoNI_moi1_60h	scl008	Calu3 cells	SARS	ExoNI	moi1	60h
+calu3_SARS__b_ExoNI_moi1_72h	scl008	Calu3 cells	SARS	ExoNI	moi1	72h
+calu3_SARS__p_ExoNI_moi1_72h	scl008	Calu3 cells	SARS	ExoNI	moi1	72h
+calu3_SARS__b_nsp16_moi5_0h	scl008	Calu3 cells	SARS	nsp16	moi1	0h
+calu3_SARS__p_nsp16_moi5_0h	scl008	Calu3 cells	SARS	nsp16	moi1	0h
+calu3_SARS__b_nsp16_moi5_7h	scl008	Calu3 cells	SARS	nsp16	moi1	7h
+calu3_SARS__p_nsp16_moi5_7h	scl008	Calu3 cells	SARS	nsp16	moi1	7h
+calu3_SARS__b_nsp16_moi5_12h	scl008	Calu3 cells	SARS	nsp16	moi1	12h
+calu3_SARS__p_nsp16_moi5_12h	scl008	Calu3 cells	SARS	nsp16	moi1	12h
+calu3_SARS__b_nsp16_moi5_24h	scl008	Calu3 cells	SARS	nsp16	moi1	24h
+calu3_SARS__p_nsp16_moi5_24h	scl008	Calu3 cells	SARS	nsp16	moi1	24h
+calu3_SARS__b_nsp16_moi5_36h	scl008	Calu3 cells	SARS	nsp16	moi1	36h
+calu3_SARS__p_nsp16_moi5_36h	scl008	Calu3 cells	SARS	nsp16	moi1	36h
+calu3_SARS__b_nsp16_moi5_48h	scl008	Calu3 cells	SARS	nsp16	moi1	48h
+calu3_SARS__p_nsp16_moi5_48h	scl008	Calu3 cells	SARS	nsp16	moi1	48h
+calu3_SARS__b_nsp16_moi5_60h	scl008	Calu3 cells	SARS	nsp16	moi1	60h
+calu3_SARS__p_nsp16_moi5_60h	scl008	Calu3 cells	SARS	nsp16	moi1	60h
+calu3_SARS__b_nsp16_moi5_72h	scl008	Calu3 cells	SARS	nsp16	moi1	72h
+calu3_SARS__p_nsp16_moi5_72h	scl008	Calu3 cells	SARS	nsp16	moi1	72h
+mouse_SARS_WT_10^2_D1__b	sm001	mouse lung	SARS	WT	1.00E+02	1d
+mouse_SARS_WT_10^2_D1__p	sm001	mouse lung	SARS	WT	1.00E+02	1d
+mouse_SARS_WT_10^2_D2__b	sm001	mouse lung	SARS	WT	1.00E+02	2d
+mouse_SARS_WT_10^2_D2__p	sm001	mouse lung	SARS	WT	1.00E+02	2d
+mouse_SARS_WT_10^2_D4__b	sm001	mouse lung	SARS	WT	1.00E+02	4d
+mouse_SARS_WT_10^2_D4__p	sm001	mouse lung	SARS	WT	1.00E+02	4d
+mouse_SARS_WT_10^2_D7__b	sm001	mouse lung	SARS	WT	1.00E+02	7d
+mouse_SARS_WT_10^2_D7__p	sm001	mouse lung	SARS	WT	1.00E+02	7d
+mouse_SARS_WT_10^3_D1__b	sm001	mouse lung	SARS	WT	1.00E+03	1d
+mouse_SARS_WT_10^3_D1__p	sm001	mouse lung	SARS	WT	1.00E+03	1d
+mouse_SARS_WT_10^3_D2__b	sm001	mouse lung	SARS	WT	1.00E+03	2d
+mouse_SARS_WT_10^3_D2__p	sm001	mouse lung	SARS	WT	1.00E+03	2d
+mouse_SARS_WT_10^3_D4__b	sm001	mouse lung	SARS	WT	1.00E+03	4d
+mouse_SARS_WT_10^3_D4__p	sm001	mouse lung	SARS	WT	1.00E+03	4d
+mouse_SARS_WT_10^3_D7__b	sm001	mouse lung	SARS	WT	1.00E+03	7d
+mouse_SARS_WT_10^3_D7__p	sm001	mouse lung	SARS	WT	1.00E+03	7d
+mouse_SARS_WT_10^4_D1__b	sm001	mouse lung	SARS	WT	1.00E+04	1d
+mouse_SARS_WT_10^4_D1__p	sm001	mouse lung	SARS	WT	1.00E+04	1d
+mouse_SARS_WT_10^4_D2__b	sm001	mouse lung	SARS	WT	1.00E+04	2d
+mouse_SARS_WT_10^4_D2__p	sm001	mouse lung	SARS	WT	1.00E+04	2d
+mouse_SARS_WT_10^4_D4__b	sm001	mouse lung	SARS	WT	1.00E+04	4d
+mouse_SARS_WT_10^4_D4__p	sm001	mouse lung	SARS	WT	1.00E+04	4d
+mouse_SARS_WT_10^4_D7__b	sm001	mouse lung	SARS	WT	1.00E+04	7d
+mouse_SARS_WT_10^4_D7__p	sm001	mouse lung	SARS	WT	1.00E+04	7d
+mouse_SARS_WT_10^5_D1__b	sm001	mouse lung	SARS	WT	1.00E+05	1d
+mouse_SARS_WT_10^5_D1__p	sm001	mouse lung	SARS	WT	1.00E+05	1d
+mouse_SARS_WT_10^5_D2__b	sm001	mouse lung	SARS	WT	1.00E+05	2d
+mouse_SARS_WT_10^5_D2__p	sm001	mouse lung	SARS	WT	1.00E+05	2d
+mouse_SARS_WT_10^5_D4__b	sm001	mouse lung	SARS	WT	1.00E+05	4d
+mouse_SARS_WT_10^5_D4__p	sm001	mouse lung	SARS	WT	1.00E+05	4d
+mouse_SARS_WT_10^5_D7__b	sm001	mouse lung	SARS	WT	1.00E+05	7d
+mouse_SARS_WT_10^5_D7__p	sm001	mouse lung	SARS	WT	1.00E+05	7d
+mouse_SARS__b_WT_10.5_d1	sm012	mouse lung	SARS	WT	1.00E+05	1d
+mouse_SARS__p_WT_10.5_d1	sm012	mouse lung	SARS	WT	1.00E+05	1d
+mouse_SARS__b_WT_10.5_d2	sm012	mouse lung	SARS	WT	1.00E+05	2d
+mouse_SARS__p_WT_10.5_d2	sm012	mouse lung	SARS	WT	1.00E+05	2d
+mouse_SARS__b_WT_10.5_d4	sm012	mouse lung	SARS	WT	1.00E+05	4d
+mouse_SARS__p_WT_10.5_d4	sm012	mouse lung	SARS	WT	1.00E+05	4d
+mouse_SARS__b_WT_10.5_d7	sm012	mouse lung	SARS	WT	1.00E+05	7d
+mouse_SARS__p_WT_10.5_d7	sm012	mouse lung	SARS	WT	1.00E+05	7d
+mouse_SARS__b_dORF6_10.5_d1	sm012	mouse lung	SARS	dORF6	1.00E+05	1d
+mouse_SARS__p_dORF6_10.5_d1	sm012	mouse lung	SARS	dORF6	1.00E+05	1d
+mouse_SARS__b_dORF6_10.5_d2	sm012	mouse lung	SARS	dORF6	1.00E+05	2d
+mouse_SARS__p_dORF6_10.5_d2	sm012	mouse lung	SARS	dORF6	1.00E+05	2d
+mouse_SARS__b_dORF6_10.5_d4	sm012	mouse lung	SARS	dORF6	1.00E+05	4d
+mouse_SARS__p_dORF6_10.5_d4	sm012	mouse lung	SARS	dORF6	1.00E+05	4d
+mouse_SARS__b_dORF6_10.5_d7	sm012	mouse lung	SARS	dORF6	1.00E+05	7d
+mouse_SARS__p_dORF6_10.5_d7	sm012	mouse lung	SARS	dORF6	1.00E+05	7d
+mouse_ct_WNV_WT_1d__b	wcb001	mouse cortex	West Nile Virus	WT	100	1d
+mouse_ct_WNV_WT_1d__p	wcb001	mouse cortex	West Nile Virus	WT	100	1d
+mouse_ct_WNV_WT_2d__b	wcb001	mouse cortex	West Nile Virus	WT	100	2d
+mouse_ct_WNV_WT_2d__p	wcb001	mouse cortex	West Nile Virus	WT	100	2d
+mouse_ct_WNV_WT_4d__b	wcb001	mouse cortex	West Nile Virus	WT	100	4d
+mouse_ct_WNV_WT_4d__p	wcb001	mouse cortex	West Nile Virus	WT	100	4d
+mouse_ct_WNV_WT_6d__b	wcb001	mouse cortex	West Nile Virus	WT	100	6d
+mouse_ct_WNV_WT_6d__p	wcb001	mouse cortex	West Nile Virus	WT	100	6d
+mouse_ct_WNV_E218A_1d__b	wcb001	mouse cortex	West Nile Virus	E218A	100	1d
+mouse_ct_WNV_E218A_1d__p	wcb001	mouse cortex	West Nile Virus	E218A	100	1d
+mouse_ct_WNV_E218A_2d__b	wcb001	mouse cortex	West Nile Virus	E218A	100	2d
+mouse_ct_WNV_E218A_2d__p	wcb001	mouse cortex	West Nile Virus	E218A	100	2d
+mouse_ct_WNV_E218A_4d__b	wcb001	mouse cortex	West Nile Virus	E218A	100	4d
+mouse_ct_WNV_E218A_4d__p	wcb001	mouse cortex	West Nile Virus	E218A	100	4d
+mouse_ct_WNV_E218A_6d__b	wcb001	mouse cortex	West Nile Virus	E218A	100	6d
+mouse_ct_WNV_E218A_6d__p	wcb001	mouse cortex	West Nile Virus	E218A	100	6d
+mouse_cb_WNV_WT_1d__b	wct001	mouse cerebellum	West Nile Virus	WT	100	1d
+mouse_cb_WNV_WT_1d__p	wct001	mouse cerebellum	West Nile Virus	WT	100	1d
+mouse_cb_WNV_WT_2d__b	wct001	mouse cerebellum	West Nile Virus	WT	100	2d
+mouse_cb_WNV_WT_2d__p	wct001	mouse cerebellum	West Nile Virus	WT	100	2d
+mouse_cb_WNV_WT_4d__b	wct001	mouse cerebellum	West Nile Virus	WT	100	4d
+mouse_cb_WNV_WT_4d__p	wct001	mouse cerebellum	West Nile Virus	WT	100	4d
+mouse_cb_WNV_WT_6d__b	wct001	mouse cerebellum	West Nile Virus	WT	100	6d
+mouse_cb_WNV_WT_6d__p	wct001	mouse cerebellum	West Nile Virus	WT	100	6d
+mouse_cb_WNV_WT218A_1d__b	wct001	mouse cerebellum	West Nile Virus	WT218A	100	1d
+mouse_cb_WNV_WT218A_1d__p	wct001	mouse cerebellum	West Nile Virus	WT218A	100	1d
+mouse_cb_WNV_WT218A_2d__b	wct001	mouse cerebellum	West Nile Virus	WT218A	100	2d
+mouse_cb_WNV_WT218A_2d__p	wct001	mouse cerebellum	West Nile Virus	WT218A	100	2d
+mouse_cb_WNV_WT218A_4d__b	wct001	mouse cerebellum	West Nile Virus	WT218A	100	4d
+mouse_cb_WNV_WT218A_4d__p	wct001	mouse cerebellum	West Nile Virus	WT218A	100	4d
+mouse_cb_WNV_WT218A_6d__b	wct001	mouse cerebellum	West Nile Virus	WT218A	100	6d
+mouse_cb_WNV_WT218A_6d__p	wct001	mouse cerebellum	West Nile Virus	WT218A	100	6d
+mouse_ln_WNV_WT_1d__b	wln002	mouse lymph node	West Nile Virus	WT	100	1d
+mouse_ln_WNV_WT_1d__p	wln002	mouse lymph node	West Nile Virus	WT	100	1d
+mouse_ln_WNV_WT_2d__b	wln002	mouse lymph node	West Nile Virus	WT	100	2d
+mouse_ln_WNV_WT_2d__p	wln002	mouse lymph node	West Nile Virus	WT	100	2d
+mouse_ln_WNV_WT_4d__b	wln002	mouse lymph node	West Nile Virus	WT	100	4d
+mouse_ln_WNV_WT_4d__p	wln002	mouse lymph node	West Nile Virus	WT	100	4d
+mouse_ln_WNV_WT_6d__b	wln002	mouse lymph node	West Nile Virus	WT	100	6d
+mouse_ln_WNV_WT_6d__p	wln002	mouse lymph node	West Nile Virus	WT	100	6d
+mouse_ln_WNV_E218A_1d__b	wln002	mouse lymph node	West Nile Virus	E218A	100	1d
+mouse_ln_WNV_E218A_1d__p	wln002	mouse lymph node	West Nile Virus	E218A	100	1d
+mouse_ln_WNV_E218A_2d__b	wln002	mouse lymph node	West Nile Virus	E218A	100	2d
+mouse_ln_WNV_E218A_2d__p	wln002	mouse lymph node	West Nile Virus	E218A	100	2d
+mouse_ln_WNV_E218A_4d__b	wln002	mouse lymph node	West Nile Virus	E218A	100	4d
+mouse_ln_WNV_E218A_4d__p	wln002	mouse lymph node	West Nile Virus	E218A	100	4d
+mouse_ln_WNV_E218A_6d__b	wln002	mouse lymph node	West Nile Virus	E218A	100	6d
+mouse_ln_WNV_E218A_6d__p	wln002	mouse lymph node	West Nile Virus	E218A	100	6d
+Series1_NHBE_SARS-CoV-2	na	human	SARS2	WT	na	na
+Series3_A549_RSV	na	human	RSV	WT	na	na
+Series4_A549_IAV	na	human	IAV	WT	na	na
+Series6_A549-ACE2_SARS-CoV-2	na	human	SARS2	WT	na	na
+Series7_Calu3_SARS-CoV-2	na	human	SARS2	WT	na	na
+Series8_A549_RSV	na	human	RSV	WT	na	na
+Series8_A549_HPIV3	na	human	HPIV3	WT	na	na
+Series9_NHBE_IAV	na	human	IAV	WT	na	na
+Series9_NHBE_IAVdNS1	na	human	IAV	IAVdNS1	na	na
+Series16_A549-ACE2_SARS-CoV-2	na	human	SARS2	WT	na	na
+Series16_A549-ACE2_SARS-CoV-2_Rux	na	human	SARS2	SARS2_Rux	na	na
