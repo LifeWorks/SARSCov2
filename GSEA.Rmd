@@ -359,3 +359,24 @@ for (ztype in ztypes) {
 ```
 
 
+## Analyze the ranked lists
+
+```{r}
+source("bagOfGenesEnrichment.R")
+```
+
+```{r}
+metrics <- c("sbetweenness", "scloseness")
+ranks <- c("relValChange", "relRankChange", "euclidean", "numIncreases")
+
+for (metric in metrics) {
+  for (rank in ranks) {
+    inFile <- paste0("rankedLists/",metric, "_", ranks, ".txt")
+    
+  }
+}
+
+
+
+```
+
