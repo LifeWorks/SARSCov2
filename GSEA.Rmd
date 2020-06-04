@@ -359,9 +359,13 @@ for (ztype in ztypes) {
 ```
 
 
-## Analyze the ranked lists
+## Analyze the ranked lists with bayOfGenesEnrichemnt.R
 
 ```{r}
+#install.packages("magrittr") # package installations are only needed the first time you use it
+#install.packages("dplyr")    # alternative installation of the %>%
+library(magrittr) # needs to be run every time you start R and want to use %>%
+library(dplyr)    # alternatively, this also loads %>%
 source("bagOfGenesEnrichment.R")
 ```
 
@@ -369,14 +373,19 @@ source("bagOfGenesEnrichment.R")
 metrics <- c("sbetweenness", "scloseness")
 ranks <- c("relValChange", "relRankChange", "euclidean", "numIncreases")
 
+results <- list()
+i <- 1
 for (metric in metrics) {
   for (rank in ranks) {
-    inFile <- paste0("rankedLists/",metric, "_", ranks, ".txt")
-    
+    inFile <- paste0("rankedLists/",metric, "_", rank, ".txt")
+    df <- read.table(inFile, header = TRUE, sep = "\t")
+    names(df) <- c("Gene", "value")
+    prefix <- paste0(metric, "_", rank)
+    results[[i]] <- computeGSEA(df, prefix, gsea_FDR = 0.05)
+    i <- i + 1
   }
 }
 
-
-
+save(results, file = "GSEAResults.RData")
 ```
 
