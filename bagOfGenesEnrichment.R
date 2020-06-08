@@ -7,7 +7,7 @@
 #' @param genes.with.values of genes and difference values
 #' @param prot.univ the space of all proteins we are considering
 #' @return gSEA output type stuff
-computeGSEA<-function(genes.with.values,prefix,gsea_FDR=0.05){
+computeGSEA<-function(genes.with.values,prefix,gsea_FDR=0.25){
   
   library(WebGestaltR)
   library(ggplot2)
@@ -24,8 +24,12 @@ computeGSEA<-function(genes.with.values,prefix,gsea_FDR=0.05){
                                        interestGene=inputdfforWebGestaltR, 
                                        interestGeneType="genesymbol", 
                                        collapseMethod="mean", perNum = 1000,
-                                       fdrThr = gsea_FDR, nThreads = 14, isOutput = T)
+                                       fdrThr = gsea_FDR, nThreads = 10, isOutput = T)
   write.table(go.bp.res.WebGestaltR, paste0(prefix, "_gseaGO_result.txt"), sep="\t", row.names=FALSE, quote = F)
+  
+  if (is.null(go.bp.res.WebGestaltR)) {
+    return(go.bp.res.WebGestaltR)
+  }
   
   top_gseaGO <- go.bp.res.WebGestaltR %>% 
     filter(FDR < gsea_FDR) %>% 

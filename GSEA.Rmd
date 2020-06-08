@@ -367,12 +367,59 @@ for (ztype in ztypes) {
 library(magrittr) # needs to be run every time you start R and want to use %>%
 library(dplyr)    # alternatively, this also loads %>%
 source("bagOfGenesEnrichment.R")
+metrics <- c("sbetweenness", "scloseness")
+ranks <- c("relValChange", "relRankChange", "euclidean", "numIncreases")
 ```
 
 ```{r}
-metrics <- c("sbetweenness", "scloseness")
-ranks <- c("relValChange", "relRankChange", "euclidean", "numIncreases")
 
+results <- list()
+i <- 1
+for (metric in metrics) {
+  for (rank in ranks[3:4]) {
+    inFile <- paste0("rankedLists/",metric, "_", rank, ".txt")
+    df <- read.table(inFile, header = TRUE, sep = "\t")
+    names(df) <- c("Gene", "value")
+    prefix <- paste0(metric, "_", rank)
+    results[[i]] <- computeGSEA(df, prefix, gsea_FDR = 0.5)
+    i <- i + 1
+  }
+}
+
+#save(results, file = "GSEAResults.RData")
+```
+```{r}
+results <- list()
+i <- 1
+for (metric in metrics) {
+  for (rank in ranks[1:2]) {
+    inFile <- paste0("rankedLists/",metric, "_", rank, ".txt")
+    df <- read.table(inFile, header = TRUE, sep = "\t")
+    names(df) <- c("Gene", "value")
+    prefix <- paste0(metric, "_", rank)
+    results[[i]] <- computeGSEA(df, prefix, gsea_FDR = 0.5)
+    i <- i + 1
+  }
+}
+```
+
+
+```{r}
+results <- list()
+i <- 1
+for (metric in metrics) {
+  for (rank in ranks[3:4]) {
+    inFile <- paste0("rankedLists/",metric, "_", rank, ".txt")
+    df <- read.table(inFile, header = TRUE, sep = "\t")
+    names(df) <- c("Gene", "value")
+    prefix <- paste0(metric, "_", rank, "_0.1")
+    results[[i]] <- computeGSEA(df, prefix, gsea_FDR = 0.1)
+    i <- i + 1
+  }
+}
+```
+
+```{r}
 results <- list()
 i <- 1
 for (metric in metrics) {
@@ -380,12 +427,9 @@ for (metric in metrics) {
     inFile <- paste0("rankedLists/",metric, "_", rank, ".txt")
     df <- read.table(inFile, header = TRUE, sep = "\t")
     names(df) <- c("Gene", "value")
-    prefix <- paste0(metric, "_", rank)
+    prefix <- paste0(metric, "_", rank, "_0.05")
     results[[i]] <- computeGSEA(df, prefix, gsea_FDR = 0.05)
     i <- i + 1
   }
 }
-
-save(results, file = "GSEAResults.RData")
 ```
-
