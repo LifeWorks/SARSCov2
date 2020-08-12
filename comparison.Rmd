@@ -1,0 +1,83 @@
+---
+title: "Comparision of ranks with enrichment analysis"
+output: html_notebook
+---
+
+Using the enrichment analysis to compare the rankings and metricsf
+
+```{r}
+#install.packages("rlist")
+library(rlist)
+library(ggplot2)
+library(latex2exp)
+
+setwd("~/Dropbox/PNNL/Omics/SARS-COV-2/SARSCov2/")
+source("GeneSets.R")
+
+# get the background gene set/list
+biggerTransGeneSet <- as.character(read.table("biggerTransGenes.txt",  header = FALSE, sep = "")$V1)
+bigTransGeneSet <- as.character(read.table("bigTransGenes.txt",  header = FALSE, sep = "")$V1)
+bigBakgrdLen <- length(bigTranGeneSet)
+#
+sars1Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
+sars2Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
+sarsTargets <- as.character(read.table("sars-targets.txt", header = FALSE, sep = "")$V1)
+
+```
+
+## Functions for calculating the enrichment scores (using p = 0, which is equavalent to Kolomogrov-Smirnov statistics)
+
+```{r}
+esFn <- function(x, p = 1) {
+  len = length(x)
+  miss = ifelse(x!=0, 0, 1)
+  #hiti = ((miss * 2 - 1) - miss) / 2
+  if (p == 0) {
+    xp <- ifelse(x!=0, 1, 0)
+  } else {
+    xp = abs(x)**p
+  }
+  sumxp = sum(xp)
+  summiss = sum(miss)
+  if (sumxp == 0) {
+    hitp = rep(0, len)
+  } else {
+    hitp = cumsum(xp) / sumxp
+  }
+  if (summiss == 0) {
+    missp = rep(0, len)
+  } else {
+    missp = cumsum(miss) / summiss
+  }
+  maximum = max(hitp - missp)
+  minimum = min(hitp - missp)
+  score = ifelse(abs(maximum) > abs(minimum), maximum, minimum)
+  return(score)
+}
+
+library(MASS)
+epFn <- function(x, xnull) {
+  fit <- fitdistr(xnull[xnull > 0], densfun="normal")
+  pvalue = 1 - pnorm(abs((x - fit$estimate[1]) / (fit$estimate[2])))
+  return(pvalue)
+}
+```
+
+
+Use the list of gene to do enrichment analysis
+
+```{r}
+samplesize = 100000
+genesetNames <- c("SARS1")
+ztypes <- c("s-closeness", "s-betweenness")
+
+dfAll <- setNames(data.frame(matrix(ncol = 7, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "Rank name", "Gene sets","Graph metrics"))
+dfi <- 1
+```
+
+### analyze the SARS1 targets with all ranks and metrics
+
+```{r}
+
+```
+
