@@ -17,11 +17,12 @@ source("GeneSets.R")
 # get the background gene set/list
 biggerTransGeneSet <- as.character(read.table("biggerTransGenes.txt",  header = FALSE, sep = "")$V1)
 bigTransGeneSet <- as.character(read.table("bigTransGenes.txt",  header = FALSE, sep = "")$V1)
-bigBakgrdLen <- length(bigTranGeneSet)
+bakgrdGeneList <- bigTransGeneSet
+lenBakgrd <- length(bakgrdGeneList)
 #
-sars1Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
-sars2Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
-sarsTargets <- as.character(read.table("sars-targets.txt", header = FALSE, sep = "")$V1)
+# sars1Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
+# sars2Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
+# sarsTargets <- as.character(read.table("sars-targets.txt", header = FALSE, sep = "")$V1)
 
 ```
 
@@ -67,15 +68,106 @@ epFn <- function(x, xnull) {
 Use the list of gene to do enrichment analysis
 
 ```{r}
-samplesize = 100000
-genesetNames <- c("SARS1")
-ztypes <- c("s-closeness", "s-betweenness")
+samplesize = 1000
+targetSetNames <- c("sars1", "sars")
+centralities <- c("s-closeness", "s-betweenness")
+rankMethods <- c("Number of Increases", "Euclidean Distance", "Absolute Rank Change", "Relative Rank Change", "Absolute Change", "Relative Change", "Combined Score")
+# rankMethods <- c("Number.of.Increases", "Euclidean.Distance", "Absolute.Rank.Change", "Relative.Rank.Change", "Absolute.Change", "Relative.Change", "Combined.Score")
+virusNames <- c("Sars", "Mers", "Iv", "Eb")
 
-dfAll <- setNames(data.frame(matrix(ncol = 7, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "Rank name", "Gene sets","Graph metrics"))
+dfEnrich <- setNames(data.frame(matrix(ncol = 8, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "Rank method", "Virus name", "Target sets","Hypergraph metrics"))
 dfi <- 1
 ```
 
 ### analyze the SARS1 targets with all ranks and metrics
+
+```{r}
+for (centrality in centralities) {
+    for (virusName in virusNames) {
+        infile <- sprintf("./no%s-%s_changes.csv", virusName, centrality)
+        if (file.exists(infile)) {
+            genelist <- read.csv(infile, header = TRUE, row.names = 1)
+            colnames(genelist) <- rankMethods
+            allGenenames <- rownames(genelist)
+            lenAll <- length(allGenenames)
+            
+            for (rankMethod in rankMethods) {
+                rankOri <- as.matrix(genelist[order(-genelist[rankMethod]),][rankMethod])
+                rank <- subset(rankOri, is.finite(rankOri))
+                genenames <- rownames(rank)
+                
+                for (targetSetName in targetSetNames) {
+                    targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
+                    enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
+                    p = enr$fisher$p.value
+                    f = enr$foldx
+                    mat = enr$mat
+                    lenShort <- length(genenames)
+                    zscores <- rank
+                    zscores[which(!(genenames %in% targetSet))] <- 0
+                    es <- esFn(zscores)
+                    sampledValues = c()
+                    for (k in 1:samplesize) {
+                        sampledis = sample(1:lenBakgrd)
+                        tempGenenames <- genenames[sampledis[1:lenShort]]
+                        tempZscores <- zscores[sampledis[1:lenShort]]
+                        tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
+                        sampledValues = c(sampledValues, esFn(tempZscores))
+                    }
+                    ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
+                    #ep = epFn(es, sampledValues)
+                    # save test result
+                    dfEnrich[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
+                    dfi <- dfi + 1
+                }
+            }
+        }
+    }
+}
+```
+
+
+```{r}
+for (centrality in centralities) {
+    rankMethod <- "individual"
+    infile <- sprintf("./bigTrans-%s-%s-ranks.csv", centrality, rankMethod)
+    if (file.exists(infile)) {
+        genelist <- read.csv(infile, header = TRUE, row.names = 1)
+        allGenenames <- rownames(genelist)
+        lenAll <- length(allGenenames)
+        for (virusName in virusNames) {
+            rankOri <- as.matrix(genelist[order(-genelist[virusName]),][virusName])
+            rank <- subset(rankOri, is.finite(rankOri))
+            genenames <- rownames(rank)
+            for (targetSetName in targetSetNames) {
+                targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
+                enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
+                p = enr$fisher$p.value
+                f = enr$foldx
+                mat = enr$mat
+                lenShort <- length(genenames)
+                zscores <- rank
+                zscores[which(!(genenames %in% targetSet))] <- 0
+                es <- esFn(zscores)
+                sampledValues = c()
+                for (k in 1:samplesize) {
+                    sampledis = sample(1:lenBakgrd)
+                    tempGenenames <- genenames[sampledis[1:lenShort]]
+                    tempZscores <- zscores[sampledis[1:lenShort]]
+                    tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
+                    sampledValues = c(sampledValues, esFn(tempZscores))
+                }
+                ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
+                #ep = epFn(es, sampledValues)
+                # save test result
+                dfEnrich[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
+                dfi <- dfi + 1
+            }
+        }
+    }
+}
+
+```
 
 ```{r}
 
