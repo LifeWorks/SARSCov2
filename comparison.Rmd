@@ -170,6 +170,33 @@ for (centrality in centralities) {
 ```
 
 ```{r}
-
+dfEnrich$`Enrichment score` <- as.numeric(dfEnrich$`Enrichment score`)
+dfEnrich$`p-value` <- as.numeric(dfEnrich$`p-value`)
 ```
+
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "sars1",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
+```
+
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "sars1",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+<!-- ```{r} -->
+<!-- # df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),] -->
+<!-- df <- dfEnrich[dfEnrich$`Target sets` == "sars",] -->
+<!-- ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270)) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- # df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),] -->
+<!-- df <- dfEnrich[dfEnrich$`Target sets` == "sars",] -->
+<!-- ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270)) -->
+<!-- ``` -->
+
 
