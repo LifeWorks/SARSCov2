@@ -10,6 +10,7 @@ Using the enrichment analysis to compare the rankings and metricsf
 library(rlist)
 library(ggplot2)
 library(latex2exp)
+library(systemPipeR)
 
 setwd("~/Dropbox/PNNL/Omics/SARS-COV-2/SARSCov2/")
 source("GeneSets.R")
@@ -69,12 +70,15 @@ Use the list of gene to do enrichment analysis
 
 ```{r}
 samplesize = 1000
-targetSetNames <- c("sars1", "sars")
+targetSetNames <- c("sars1", "sars", "influenza", "influenzaIntersect", "influenzaAll", "ebola", "ebolaLong")
 centralities <- c("s-closeness", "s-betweenness")
 rankMethods <- c("Number of Increases", "Euclidean Distance", "Absolute Rank Change", "Relative Rank Change", "Absolute Change", "Relative Change", "Combined Score")
 # rankMethods <- c("Number.of.Increases", "Euclidean.Distance", "Absolute.Rank.Change", "Relative.Rank.Change", "Absolute.Change", "Relative.Change", "Combined.Score")
 virusNames <- c("Sars", "Mers", "Iv", "Eb")
+```
 
+
+```{r}
 dfEnrich <- setNames(data.frame(matrix(ncol = 8, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "Rank method", "Virus name", "Target sets","Hypergraph metrics"))
 dfi <- 1
 ```
@@ -83,90 +87,99 @@ dfi <- 1
 
 ```{r}
 for (centrality in centralities) {
-    for (virusName in virusNames) {
-        infile <- sprintf("./no%s-%s_changes.csv", virusName, centrality)
-        if (file.exists(infile)) {
-            genelist <- read.csv(infile, header = TRUE, row.names = 1)
-            colnames(genelist) <- rankMethods
-            allGenenames <- rownames(genelist)
-            lenAll <- length(allGenenames)
-            
-            for (rankMethod in rankMethods) {
-                rankOri <- as.matrix(genelist[order(-genelist[rankMethod]),][rankMethod])
-                rank <- subset(rankOri, is.finite(rankOri))
-                genenames <- rownames(rank)
-                
-                for (targetSetName in targetSetNames) {
-                    targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
-                    enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
-                    p = enr$fisher$p.value
-                    f = enr$foldx
-                    mat = enr$mat
-                    lenShort <- length(genenames)
-                    zscores <- rank
-                    zscores[which(!(genenames %in% targetSet))] <- 0
-                    es <- esFn(zscores)
-                    sampledValues = c()
-                    for (k in 1:samplesize) {
-                        sampledis = sample(1:lenBakgrd)
-                        tempGenenames <- genenames[sampledis[1:lenShort]]
-                        tempZscores <- zscores[sampledis[1:lenShort]]
-                        tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
-                        sampledValues = c(sampledValues, esFn(tempZscores))
-                    }
-                    ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
-                    #ep = epFn(es, sampledValues)
-                    # save test result
-                    dfEnrich[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
-                    dfi <- dfi + 1
-                }
-            }
+  for (virusName in virusNames) {
+    infile <- sprintf("./no%s-%s_changes.csv", virusName, centrality)
+    if (file.exists(infile)) {
+      genelist <- read.csv(infile, header = TRUE, row.names = 1)
+      colnames(genelist) <- rankMethods
+      allGenenames <- rownames(genelist)
+      lenAll <- length(allGenenames)
+      
+      for (rankMethod in rankMethods) {
+        rankOri <- as.matrix(genelist[order(-genelist[rankMethod]),][rankMethod])
+        rank <- subset(rankOri, is.finite(rankOri))
+        genenames <- rownames(rank)
+        
+        for (targetSetName in targetSetNames) {
+          targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
+          enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
+          p = enr$fisher$p.value
+          f = enr$foldx
+          mat = enr$mat
+          lenShort <- length(genenames)
+          zscores <- rank
+          zscores[which(!(genenames %in% targetSet))] <- 0
+          es <- esFn(zscores)
+          sampledValues = c()
+          for (k in 1:samplesize) {
+            sampledis = sample(1:lenBakgrd)
+            tempGenenames <- genenames[sampledis[1:lenShort]]
+            tempZscores <- zscores[sampledis[1:lenShort]]
+            tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
+            sampledValues = c(sampledValues, esFn(tempZscores))
+          }
+          ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
+          #ep = epFn(es, sampledValues)
+          # save test result
+          dfEnrich[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
+          dfi <- dfi + 1
         }
+      }
     }
+  }
 }
 ```
 
 
 ```{r}
 for (centrality in centralities) {
-    rankMethod <- "individual"
-    infile <- sprintf("./bigTrans-%s-%s-ranks.csv", centrality, rankMethod)
-    if (file.exists(infile)) {
-        genelist <- read.csv(infile, header = TRUE, row.names = 1)
-        allGenenames <- rownames(genelist)
-        lenAll <- length(allGenenames)
-        for (virusName in virusNames) {
-            rankOri <- as.matrix(genelist[order(-genelist[virusName]),][virusName])
-            rank <- subset(rankOri, is.finite(rankOri))
-            genenames <- rownames(rank)
-            for (targetSetName in targetSetNames) {
-                targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
-                enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
-                p = enr$fisher$p.value
-                f = enr$foldx
-                mat = enr$mat
-                lenShort <- length(genenames)
-                zscores <- rank
-                zscores[which(!(genenames %in% targetSet))] <- 0
-                es <- esFn(zscores)
-                sampledValues = c()
-                for (k in 1:samplesize) {
-                    sampledis = sample(1:lenBakgrd)
-                    tempGenenames <- genenames[sampledis[1:lenShort]]
-                    tempZscores <- zscores[sampledis[1:lenShort]]
-                    tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
-                    sampledValues = c(sampledValues, esFn(tempZscores))
-                }
-                ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
-                #ep = epFn(es, sampledValues)
-                # save test result
-                dfEnrich[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
-                dfi <- dfi + 1
-            }
+  rankMethod <- "individual"
+  infile <- sprintf("./bigTrans-%s-%s-ranks.csv", centrality, rankMethod)
+  if (file.exists(infile)) {
+    genelist <- read.csv(infile, header = TRUE, row.names = 1)
+    allGenenames <- rownames(genelist)
+    lenAll <- length(allGenenames)
+    for (virusName in virusNames) {
+      rankOri <- as.matrix(genelist[order(-genelist[virusName]),][virusName])
+      rank <- subset(rankOri, is.finite(rankOri))
+      genenames <- rownames(rank)
+      for (targetSetName in targetSetNames) {
+        targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
+        enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
+        p = enr$fisher$p.value
+        f = enr$foldx
+        mat = enr$mat
+        lenShort <- length(genenames)
+        zscores <- rank
+        zscores[which(!(genenames %in% targetSet))] <- 0
+        es <- esFn(zscores)
+        sampledValues = c()
+        for (k in 1:samplesize) {
+          sampledis = sample(1:lenBakgrd)
+          tempGenenames <- genenames[sampledis[1:lenShort]]
+          tempZscores <- zscores[sampledis[1:lenShort]]
+          tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
+          sampledValues = c(sampledValues, esFn(tempZscores))
         }
+        ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
+        #ep = epFn(es, sampledValues)
+        # save test result
+        dfEnrich[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
+        dfi <- dfi + 1
+      }
     }
+  }
 }
 
+```
+
+```{r}
+save(dfEnrich, file = "dfEnrich.RData")
+```
+
+
+```{r}
+load("dfEnrich.RData")
 ```
 
 ```{r}
@@ -181,22 +194,215 @@ ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `
 ```
 
 ```{r}
-# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
-df <- dfEnrich[dfEnrich$`Target sets` == "sars1",]
 ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
 ```
 
 
-<!-- ```{r} -->
-<!-- # df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),] -->
-<!-- df <- dfEnrich[dfEnrich$`Target sets` == "sars",] -->
-<!-- ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270)) -->
-<!-- ``` -->
 
-<!-- ```{r} -->
-<!-- # df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),] -->
-<!-- df <- dfEnrich[dfEnrich$`Target sets` == "sars",] -->
-<!-- ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270)) -->
-<!-- ``` -->
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "influenza",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "influenzaRNAi1",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "influenzaAll",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "ebola",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfEnrich[dfEnrich$`Target sets` == "ebolaLong",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
+```
+
+
+```{r}
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
+```
+
+# Comparing the targeted lists
+
+```{r}
+targetSetNames0 <- targetSetNames <- c("sars1", "sars2", "influenza", "ebola")
+targetSets <- list()
+for (i in seq(length(targetSetNames0))) {
+  targetSet <- as.character(read.table(paste0(targetSetNames0[i],"-targets.txt"), header = FALSE, sep = "")$V1)
+  targetSets[[i]] <- targetSet
+}
+
+names(targetSets) <- targetSetNames0
+
+```
+
+```{r}
+vennset <- overLapper(targetSets, type="vennsets")
+vennPlot(vennset, mymain = "Intersections of target genes")
+```
+
+
+```{r}
+vennFile <- paste0("vennDiagram.pdf")
+pdf(vennFile,height=6,width=8)
+vennPlot(vennset, mymain = "Intersections of target genes")
+dev.off()
+```
+
+```{r}
+interList <- vennlist(vennset)
+save(interList, file = "intersections.RData")
+```
+
+```{r}
+interNames <- names(interList)
+for (i in seq(length(interNames))) {
+  interName <- interNames[i]
+  intergenes <- interList[[i]]
+  if (length(intergenes) > 0) {
+    write.table(intergenes, file = paste0("targetSets/intersections-", interName, ".txt"), sep="\t", quote=FALSE, col.names = FALSE)
+  }
+}
+```
+
+```{r}
+topNum <- 1000
+```
+
+
+```{r}
+for (rankMethod in rankMethods) {
+  
+  for (centrality in centralities) {
+    
+    targetSets <- list()
+    for (i in seq(length(virusNames))) {
+      infile <- sprintf("./no%s-%s_changes.csv", virusNames[i], centrality)
+      if (file.exists(infile)) {
+        genelist <- read.csv(infile, header = TRUE, row.names = 1)
+        colnames(genelist) <- rankMethods
+        
+        rankOri <- as.matrix(genelist[order(-genelist[rankMethod]),][rankMethod])
+        rank <- subset(rankOri, is.finite(rankOri))
+        genenames <- rownames(rank)
+        
+        targetSets[[i]] <- genenames[1:topNum]
+        
+      }
+    }
+    names(targetSets) <- virusNames
+    
+    label = paste0(centrality, "-", rankMethod, "-top-", topNum)
+    dir.create(file.path("venn", label))
+    
+    vennset <- overLapper(targetSets, type="vennsets")
+    vennFile <- paste0("venn/", label, ".pdf")
+    pdf(vennFile,height=6,width=8)
+    vennPlot(vennset, mymain = paste0("Intersections of target genes: ", label))
+    dev.off()
+    
+    interList <- vennlist(vennset)
+    save(interList, file = paste0("venn/", label, ".RData"))
+    
+    interNames <- names(interList)
+    for (i in seq(length(interNames))) {
+      interName <- interNames[i]
+      intergenes <- interList[[i]]
+      if (length(intergenes) > 0) {
+        write.table(intergenes, file = paste0("venn/", label, "/", interName, ".txt"), sep="\t", quote=FALSE, col.names = FALSE, row.names = FALSE)
+      }
+    }
+    
+  }
+}
+```
+
+
+
+```{r}
+rankMethod <- "individual"
+
+for (centrality in centralities) {
+  
+  targetSets <- list()
+  infile <- sprintf("./bigTrans-%s-%s-ranks.csv", centrality, rankMethod)
+  for (i in seq(length(virusNames))) {
+
+    if (file.exists(infile)) {
+      genelist <- read.csv(infile, header = TRUE, row.names = 1)
+      colnames(genelist) <- virusNames
+      
+      rankOri <- as.matrix(genelist[order(-genelist[virusNames[i]]),][virusNames[i]])
+      rank <- subset(rankOri, is.finite(rankOri))
+      genenames <- rownames(rank)
+      
+      targetSets[[i]] <- genenames[1:topNum]
+      
+    }
+  }
+  names(targetSets) <- virusNames
+  
+  label = paste0(centrality, "-", rankMethod, "-top-", topNum)
+  dir.create(file.path("venn", label))
+  
+  vennset <- overLapper(targetSets, type="vennsets")
+  vennFile <- paste0("venn/", label, ".pdf")
+  pdf(vennFile,height=6,width=8)
+  vennPlot(vennset, mymain = paste0("Intersections of target genes: ", label))
+  dev.off()
+  
+  interList <- vennlist(vennset)
+  save(interList, file = paste0("venn/", label, ".RData"))
+  
+  interNames <- names(interList)
+  for (i in seq(length(interNames))) {
+    interName <- interNames[i]
+    intergenes <- interList[[i]]
+    if (length(intergenes) > 0) {
+      write.table(intergenes, file = paste0("venn/", label, "/", interName, ".txt"), sep="\t", quote=FALSE, col.names = FALSE, row.names = FALSE)
+    }
+  }
+  
+}
+```
+
 
 

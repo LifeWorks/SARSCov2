@@ -24,18 +24,21 @@ Firt, we get the gene lists from the excel files and txt files. Then use the gen
 library(rlist)
 library(ggplot2)
 library(latex2exp)
+library(systemPipeR)
 
 setwd("~/Dropbox/PNNL/Omics/SARS-COV-2/SARSCov2/")
+source("GeneSets.R")
+
 # get the background gene set/list
 biggerTransGeneSet <- as.character(read.table("biggerTransGenes.txt",  header = FALSE, sep = "")$V1)
-lenBakgrd <- length(biggerTranGeneSet)
-# get gene lists from functional sets
-isgsGeneSet <- read.table("ISGs.txt", header = TRUE, sep = "\t")
-isgsGeneList <- as.character(isgsGeneSet$Gene.Name)
-irGeneList <- as.character(read.table("immuneResponse.txt", header = FALSE, sep = "")$V1)
-ptGeneList <- as.character(unlist(read.table("pathogen_targets.gmt")))[-(1:4)]
+bigTransGeneSet <- as.character(read.table("bigTransGenes.txt",  header = FALSE, sep = "")$V1)
+bakgrdGeneList <- biggerTransGeneSet
+lenBakgrd <- length(bakgrdGeneList)
+#
+# sars1Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
+# sars2Targets <- as.character(read.table("sars1-targets.txt", header = FALSE, sep = "")$V1)
+# sarsTargets <- as.character(read.table("sars-targets.txt", header = FALSE, sep = "")$V1)
 
-source("GeneSets.R")
 ```
 
 ## Functions for calculating the enrichment scores (using p = 0, which is equavalent to Kolomogrov-Smirnov statistics)
@@ -81,111 +84,101 @@ epFn <- function(x, xnull) {
 ## Calculating the enrichment scores with different measurements
 
 ```{r}
-samplesize = 100000
-ss <- c(1:50)
-genesetNames <- c("ISGS", "IR", "PT")
-ztypes <- c("s-closeness", "s-betweenness")
-#tsRankedGeneAllUniLen <- list()
-dfAll <- setNames(data.frame(matrix(ncol = 7, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "s", "Gene sets","Graph metrics"))
+samplesize = 1000
+targetSetNames <- c("sars2")
+centralities <- c("s-closeness", "s-betweenness")
+rankMethods <- c("Number of Increases", "Euclidean Distance", "Absolute Rank Change", "Relative Rank Change", "Absolute Change", "Relative Change", "Combined Score")
+# rankMethods <- c("Number.of.Increases", "Euclidean.Distance", "Absolute.Rank.Change", "Relative.Rank.Change", "Absolute.Change", "Relative.Change", "Combined.Score")
+virusNames <- c("Sars", "Mers", "Iv", "Eb", "Sars2")
+```
+
+```{r}
+dfSars2 <- setNames(data.frame(matrix(ncol = 8, nrow = 0)), c("genecount", "p", "Enrichment score", "p-value", "Rank method", "Virus name", "Target sets","Hypergraph metrics"))
 dfi <- 1
 ```
+
 
 ### Now analyse the s centrality and s betweenness scores
 
 #### Using the average values of individual metrics
 
 ```{r}
-for (ztype in ztypes) {
-  infile <- sprintf("./biggerTrans-%s.csv", ztype)
-  if (file.exists(infile)) {
-    genelist <- read.csv(infile, header = TRUE, row.names = 1)
-    allGenenames <- rownames(genelist)
-    lenAll <- length(allGenenames)
-    #sRankedGeneAll <- list()
-    for (j in seq(1,length(ss))) {
-      higherOrder <- as.matrix(genelist[1:j])
-      aveHigherOrder <- sort(rowMeans(higherOrder), decreasing = TRUE)
-      allZscores <- aveHigherOrder
-      bakgrdZscores <- c(allZscores, rep(0, lenBakgrd - lenAll))
-      aveHigherOrderNoZeros <- aveHigherOrder[aveHigherOrder!=0]
-      genename <- names(aveHigherOrderNoZeros)
-      zscore <- aveHigherOrderNoZeros
-      dfsorted <- data.frame(genename, zscore)
-      rownames(dfsorted) <- 1:nrow(dfsorted)
-      ## calculate the statistics
-      for (gs in 1:length(genesetNames)) {
-        if (gs == 1) {
-          functionSet = isgsGeneList
-        } else if (gs == 2) {
-          functionSet = irGeneList
-        } else {
-          functionSet = ptGeneList
-        }
-        # Fisher's exact test
-        enr <- enrichment_by_fishers(dfsorted$genename, biggerTransGeneSet, functionSet)
-        p = enr$fisher$p.value
-        f = enr$foldx
-        mat = enr$mat
-        # ES calculation
-        genenames = dfsorted$genename
-        lenShort <- length(genenames)
-        zscores <- dfsorted$zscore
-        zscores[which(!(genenames %in% functionSet))] <- 0
-        es <- esFn(zscores)
-        sampledValues = c()
-        for (k in 1:samplesize) {
-          sampledis = sample(1:lenBakgrd)
-          # tempGenenames <- biggerTransGeneSet[sampledis[1:lenShort]]
-          # tempZscores <- bakgrdZscores[sampledis[1:lenShort]]
-          tempGenenames <- genenames[sampledis[1:lenShort]]
-          tempZscores <- zscores[sampledis[1:lenShort]]
-          tempZscores[which(!(tempGenenames %in% functionSet))] <- 0
-          sampledValues = c(sampledValues, esFn(tempZscores))
-        }
+for (centrality in centralities) {
+  for (virusName in virusNames) {
+    infile <- sprintf("./no%s-%s_changes.csv", virusName, centrality)
+    if (file.exists(infile)) {
+      genelist <- read.csv(infile, header = TRUE, row.names = 1)
+      colnames(genelist) <- rankMethods
+      allGenenames <- rownames(genelist)
+      lenAll <- length(allGenenames)
+      
+      for (rankMethod in rankMethods) {
+        rankOri <- as.matrix(genelist[order(-genelist[rankMethod]),][rankMethod])
+        rank <- subset(rankOri, is.finite(rankOri))
+        genenames <- rownames(rank)
         
-        ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
-        #ep = epFn(es, sampledValues)
-        # save test result
-        dfAll[dfi,] <- c(mat[1,1], p, es, ep, ss[j], genesetNames[gs], ztype)
-        dfi <- dfi + 1
+        for (targetSetName in targetSetNames) {
+          targetSet <- as.character(read.table(paste0(targetSetName,"-targets.txt"), header = FALSE, sep = "")$V1)
+          enr <- enrichment_by_fishers(genenames, bakgrdGeneList, targetSet)
+          p = enr$fisher$p.value
+          f = enr$foldx
+          mat = enr$mat
+          lenShort <- length(genenames)
+          zscores <- rank
+          zscores[which(!(genenames %in% targetSet))] <- 0
+          es <- esFn(zscores)
+          sampledValues = c()
+          for (k in 1:samplesize) {
+            sampledis = sample(1:lenBakgrd)
+            tempGenenames <- genenames[sampledis[1:lenShort]]
+            tempZscores <- zscores[sampledis[1:lenShort]]
+            tempZscores[which(!(tempGenenames %in% targetSet))] <- 0
+            sampledValues = c(sampledValues, esFn(tempZscores))
+          }
+          ep = (length(which(sampledValues >= es)) + 1) / (samplesize + 1)
+          #ep = epFn(es, sampledValues)
+          # save test result
+          dfSars2[dfi,] <- c(mat[1,1], p, es, ep, rankMethod, virusName, targetSetName, centrality)
+          dfi <- dfi + 1
+        }
       }
     }
-    #tsRankedGeneAllUniLen <- c(tsRankedGeneAllUniLen, list(sRankedGeneAll))
   }
 }
-#save(tsRankedGeneAllUniLen, file = "tsRankedGeneAllUniLen.RData")
-
 ```
 
 
 ### Make all the plotable values as numeric and save to file
 
 ```{r}
-save(dfAll, file = "dfAllAve.RData")
+save(dfSars2, file = "dfSars2.RData")
+```
+
+
+```{r}
+load("dfSars2.RData")
+```
+
+```{r}
+dfSars2$`Enrichment score` <- as.numeric(dfSars2$`Enrichment score`)
+dfSars2$`p-value` <- as.numeric(dfSars2$`p-value`)
 ```
 
 ## Load and plot results
 
 ```{r}
-load("dfAllAve.RData")
-dfAll$genecount <- as.numeric(dfAll$genecount)
-dfAll$p <- as.numeric(dfAll$p)
-dfAll$`Enrichment score` <- as.numeric(dfAll$`Enrichment score`)
-dfAll$`p-value` <- as.numeric(dfAll$`p-value`)
-dfAll$s <- as.numeric(dfAll$s)
+# df <- dfEnrich[Reduce(intersect, list(which(dfEnrich$`Target sets` == "sars1"), which(), which(), which())),]
+df <- dfSars2[dfSars2$`Target sets` == "sars2",]
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`Enrichment score`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_continuous() + theme(axis.text.x = element_text(angle=270))
 ```
-
-Updates@2020-01-13 Generate plots of s <= 45 (also for p value plot) with z threshold = 3 and with p value threshold
 
 ```{r}
-df <- dfAll
-ggplot(data = df, mapping = aes(x=s, y=`Enrichment score`, color = `Gene sets`, shape = `Graph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_x_continuous(name='s', limits=c(0, 50)) + scale_y_continuous(limits = c(0.0, NA))
+ggplot(data = df, mapping = aes(x=`Rank method`, y=`p-value`, color = `Virus name`, shape = `Hypergraph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_y_log10() + theme(axis.text.x = element_text(angle=270))
 ```
 
 
-```{r}
-ggplot(data = df, mapping = aes(x=s, y=`p-value`, color = `Gene sets`, shape = `Graph metrics`)) + geom_point(size=3 ,alpha = 0.6) + geom_line(linetype = "dashed") + scale_x_continuous(name=TeX("s"),  limits=c(0, 50)) + scale_y_log10(limits = c(NA, 1))
-```
+
+
 ## Calculating the enrichment scores with different measurements
 
 ```{r}
